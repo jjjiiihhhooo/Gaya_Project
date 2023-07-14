@@ -9,7 +9,7 @@ public class Enermy : MonoBehaviour
     public Transform target;
     public Rigidbody2D rb;
     protected float curSpeed, attackDelay, spawnX;
-    protected int enermyVision, 
+    protected int enermyVision, adiya;
     protected bool isDie = false, goBack = false;
     public Animator eAnimator;
     public float test;
