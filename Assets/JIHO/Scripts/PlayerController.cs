@@ -128,10 +128,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Idle()
-    {
-
-    }
 
     public void Attack()
     {
