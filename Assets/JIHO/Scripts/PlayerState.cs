@@ -26,7 +26,7 @@ public class PlayerIdleState : State<PlayerController>
 
     public override void StateUpdate(PlayerController playerController)
     {
-        playerController.Idle();
+        //playerController.Idle();
     }
 }
 
