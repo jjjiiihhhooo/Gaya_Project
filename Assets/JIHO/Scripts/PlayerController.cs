@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     public float walkSpeed;
     public float testDistance;
+    public float rightDistance;
     public LayerMask testLayer;
 
     public float currentSpeed;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isJump;
     public bool isGround;
+    public bool rightIsWall;
+    public bool leftIsWall;
 
 
     private void Awake()
@@ -50,6 +53,28 @@ public class PlayerController : MonoBehaviour
         else
         {
             isGround = false;
+        }
+
+        if (Physics2D.Raycast(transform.position, Vector2.right, rightDistance, testLayer))
+        {
+            Debug.Log("RightWall");
+            rightIsWall = true;
+            leftIsWall = false;
+        }
+        else
+        {
+            rightIsWall = false;
+        }
+
+        if(Physics2D.Raycast(transform.position, Vector2.left, rightDistance, testLayer))
+        {
+            Debug.Log("LeftWall");
+            leftIsWall = true;
+            rightIsWall = false;
+        }
+        else
+        {
+            leftIsWall = false;
         }
     }
 
@@ -78,7 +103,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
         {
-            if (Input.GetAxisRaw("Vertical") != 0) anim.SetTrigger("isJump");
+            if (Input.GetAxisRaw("Vertical") != 0)
+            {
+                if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")) anim.SetTrigger("isJump");
+            }
             else anim.SetBool("isMove", true);
 
             if (currentState.GetType() != typeof(PlayerWalkState)) StateChange(playerWalkState);
@@ -125,19 +153,24 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+        
+
         if (x < 0)
         {
             attackCol.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
             spriteRenderer.flipX = true;
         }
-        else
+        else if(x > 0)
         {
             attackCol.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
             spriteRenderer.flipX = false;
         }
-
+        if (x > 0 && rightIsWall) x = 0;
+        else if (x < 0 && leftIsWall) x = 0;
         playerVec.x = x;
         if(isGround) playerVec.y = y * jumpPower;
+
+        
 
         transform.position += playerVec * currentSpeed * Time.fixedDeltaTime;
     }
