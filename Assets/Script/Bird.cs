@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
+    public int ASDJKASD;
     public Transform target;
     public float curSpeed, isDescent, distance, fy, ys, fx;
     public bool isAttack;
@@ -99,7 +100,7 @@ public class Bird : MonoBehaviour
             direction = -1;
         }
 
-        if (fx - transform.position.x < 5)
+        if (fx - transform.position.x < ASDJKASD)
         {
             if(direction == -1)
             {
@@ -109,7 +110,7 @@ public class Bird : MonoBehaviour
                 }
             }
         }
-        if (fx - transform.position.x > -5)
+        if (fx - transform.position.x > -ASDJKASD)
         {
             if (direction == 1)
             { 
