@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss : Enermy
@@ -14,12 +15,14 @@ public class Boss : Enermy
     public GameObject bossWall_1;
     public GameObject bossWall_2;
     public TextMeshProUGUI text;
+    public GameObject attackTitle;
 
     public bool isLeft;
     public bool isAttack_1;
     public bool isAttack_2;
     public bool isCheck;
     public bool bossStart;
+    
 
     public float x;
 
@@ -116,7 +119,7 @@ public class Boss : Enermy
     public void BossGetDamage(float damage)
     {
         currentHp -= damage;
-        
+        if (boss_anim.GetCurrentAnimatorStateInfo(0).IsName("Boss_middle_Idle")) boss_anim.SetTrigger("Hit");
         if (currentHp <= 0) isDie = true;
 
         
@@ -149,6 +152,8 @@ public class Boss : Enermy
     public void Attack_2()
     {
         Debug.Log("µé¾î¿È");
+        int rand = Random.Range(93, 97);
+        attackTitle.transform.position = new Vector3(rand, attackTitle.transform.position.y, attackTitle.transform.position.z);
         for(int i = 0; i < effects.Length; i++)
         {
             effects[i].SetActive(true);

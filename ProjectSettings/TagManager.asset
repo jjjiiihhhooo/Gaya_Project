@@ -10,6 +10,7 @@ TagManager:
   - BossCol
   - BossStart
   - Boss
+  - Out
   layers:
   - Default
   - TransparentFX

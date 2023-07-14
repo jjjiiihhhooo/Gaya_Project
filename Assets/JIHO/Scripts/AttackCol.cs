@@ -25,6 +25,7 @@ public class AttackCol : MonoBehaviour
         if(collision.CompareTag("Enemy"))
         {
             Sound.instance.Play(Sound.instance.audioDictionary["Hit"], false);
+            player.effect.transform.localScale = new Vector3(1, 1, 1);
             player.effect.SetActive(false);
             player.effect.transform.position =new Vector3(collision.transform.position.x, collision.transform.position.y, 5);
             player.effect.SetActive(true);
@@ -33,6 +34,7 @@ public class AttackCol : MonoBehaviour
         if (collision.CompareTag("Boss"))
         {
             Sound.instance.Play(Sound.instance.audioDictionary["Hit"], false);
+            player.effect.transform.localScale = new Vector3(2,2,2);
             player.effect.SetActive(false);
             player.effect.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y, 5);
             player.effect.SetActive(true);

@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     public Sprite[] hearts;
     public Image[] curHeart;
     public GameObject effect;
-    public TextMeshProUGUI deathCountText;
+    public TextMeshProUGUI lifeCountText;
+    public GameObject out_obj;
     public Vector3 startPos;
 
     public Boss middleBoss;
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public float attackDelay;
     public float currentDelay;
 
-    public int deathCount;
+    public int LifeCount;
 
     public float hitDelay;
     public float currentHitDelay;
@@ -239,12 +240,32 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector2(transform.position.x - num, transform.position.y);
         }
         anim.SetTrigger("Hit");
-        
     }
 
     public void Die()
     {
+        StartCoroutine(DieCor());
+    }
+
+    private IEnumerator DieCor()
+    {
         Respawn();
+        LifeCount--;
+        out_obj.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        lifeCountText.text = "L";
+        yield return new WaitForSeconds(0.1f);
+        lifeCountText.text = "Li";
+        yield return new WaitForSeconds(0.1f);
+        lifeCountText.text = "Lif";
+        yield return new WaitForSeconds(0.1f);
+        lifeCountText.text = "Life";
+        yield return new WaitForSeconds(0.1f);
+        lifeCountText.text = "Life : ";
+        yield return new WaitForSeconds(0.1f);
+        lifeCountText.text = "Life : " + LifeCount.ToString();
+        yield return new WaitForSeconds(0.7f);
+        out_obj.SetActive(false);
     }
 
     public void Respawn()
@@ -277,6 +298,11 @@ public class PlayerController : MonoBehaviour
         {
             if(middleBoss.gameObject.activeSelf) middleBoss.BossStart();
 
+        }
+
+        if(collision.CompareTag("Out"))
+        {
+            Die();
         }
     }
 }

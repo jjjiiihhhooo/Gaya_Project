@@ -13,7 +13,7 @@ public class Boss_Middle_Arrow : MonoBehaviour
     {
         downStop = false;
         anim = GetComponent<Animator>();
-        transform.position = startPos;
+        transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
     }
 
     private void Update()
@@ -47,7 +47,7 @@ public class Boss_Middle_Arrow : MonoBehaviour
 
     private IEnumerator SetCor()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.4f);
         SetActive();
     }
 
