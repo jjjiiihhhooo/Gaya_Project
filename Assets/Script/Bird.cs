@@ -30,12 +30,12 @@ public class Bird : MonoBehaviour
         currentHp = maxHp;
         direction = 1;
         isDescent = -1;
-        curSpeed = 2.5f;
+        curSpeed = 3f;
 
         fy = transform.position.y;
         fx = transform.position.x;
         isMove = false;
-        times = 1;
+        times = 2;
     }
 
     public void StartMove()
@@ -50,7 +50,6 @@ public class Bird : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        eAnimator.SetTrigger("Hit");
         if (transform.position.x - target.position.x >= 0) transform.position = new Vector2(transform.position.x + num, transform.position.y);
         else
         {
@@ -70,7 +69,7 @@ public class Bird : MonoBehaviour
         if (!isAttack)
         {
             Move();
-            if (distance * direction > -1 && distance * direction < -0.6)
+            if (distance * direction > -2 && distance * direction < -1.2)
             {
                 isAttack = true;
                 isDescent = -1;
@@ -104,7 +103,7 @@ public class Bird : MonoBehaviour
         {
             if(direction == -1)
             {
-                if (distance > -5 && distance < 5)
+                if (distance > -10 && distance < 10)
                 {
                     transform.Translate(new Vector2(direction, 0) * Time.deltaTime * curSpeed);
                 }
@@ -114,7 +113,7 @@ public class Bird : MonoBehaviour
         {
             if (direction == 1)
             { 
-                if (distance > -5 && distance < 5)
+                if (distance > -10 && distance < 10)
                 {
                     transform.Translate(new Vector2(direction, 0) * Time.deltaTime * curSpeed);
                 }
@@ -131,16 +130,16 @@ public class Bird : MonoBehaviour
         //    transform.localScale = new Vector3(direction, 1, 1);
         transform.Translate(new Vector2(direction, isDescent) * Time.deltaTime * curSpeed * times);
         Debug.Log("Attack");
-        if (transform.position.y <= fy - 1)
+        if (target.position.y >= transform.position.y)
         {
             isDescent = 1;
             direction = -direction;
-            times = 0.6f;
+            times = 1.5f;
         }
         if (fy < transform.position.y)
         {
             isAttack = false;
-            times = 1;
+            times = 2;
         }
     }
 }
