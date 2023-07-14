@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 playerVec;
     public GameObject attackCol;
     public CameraMove cameraMove;
+    public Sprite[] hearts;
+    public Image[] curHeart;
 
     [Header("스테이터스")]
     public float jumpPower;
@@ -24,19 +28,39 @@ public class PlayerController : MonoBehaviour
     public float attackDelay;
     public float currentDelay;
 
+    public float hitDelay;
+    public float currentHitDelay;
+
     public float currentHp;
     public float maxHp;
+    public float num;
 
     public bool isJump;
     public bool isGround;
     public bool rightIsWall;
     public bool leftIsWall;
+    public bool isHit;
+
+    private void Awake()
+    {
+        cameraMove = FindObjectOfType<CameraMove>();
+        currentHp = maxHp;
+    }
 
     private void Update()
     {
         PlayerInput();
         AttackDelay();
+        HitDelay();
         RayCast();
+    }
+
+    private void HitDelay()
+    {
+        if (currentHitDelay >= 0)
+        {
+            currentHitDelay -= Time.deltaTime;
+        }
     }
 
     private void RayCast()
@@ -119,6 +143,7 @@ public class PlayerController : MonoBehaviour
     public void Attack()
     {
         if (currentDelay > 0) return;
+        if (isHit) return;
         anim.SetTrigger("Attack");
         currentDelay = attackDelay;
 
@@ -156,21 +181,68 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void GetDamage()
+    public void GetDamage(Transform target)
     {
+        currentHitDelay = hitDelay;
         currentHp -= 1;
-    }
-
-    public void StateChange(State<PlayerController> newState)
-    {
-        newState.StateChange(this);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("CameraMove"))
+        if (currentHp == 5)
         {
-            
+            curHeart[1].sprite = hearts[0];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[1];
+        }
+        else if(currentHp == 4)
+        {
+            curHeart[1].sprite = hearts[0];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 3)
+        {
+            curHeart[1].sprite = hearts[1];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 2)
+        {
+            curHeart[1].sprite = hearts[2];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 1)
+        {
+            curHeart[1].sprite = hearts[2];
+            curHeart[2].sprite = hearts[1];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 0)
+        {
+            curHeart[1].sprite = hearts[2];
+            curHeart[2].sprite = hearts[2];
+            curHeart[0].sprite = hearts[2];
+            Die();
+        }
+
+        if (transform.position.x - target.position.x >= 0) transform.position = new Vector2(transform.position.x + num, transform.position.y);
+        else
+        {
+            transform.position = new Vector2(transform.position.x - num, transform.position.y);
+        }
+        anim.SetTrigger("Hit");
+        
+    }
+
+    public void Die()
+    {
+        Debug.Log("Die!!");
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            if (currentHitDelay <= 0) GetDamage(collision.transform);
+
         }
     }
 }

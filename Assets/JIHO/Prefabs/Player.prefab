@@ -157,7 +157,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -176,18 +176,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06025219, y: 0.15424609}
+  m_Offset: {x: 0.065467596, y: 0.09166062}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 0.9375}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50352, y: 0.5565424}
+  m_Size: {x: 0.3470559, y: 0.43137145}
   m_EdgeRadius: 0
 --- !u!114 &6304144593885889583
 MonoBehaviour:
@@ -207,6 +207,14 @@ MonoBehaviour:
   playerVec: {x: 0, y: 0, z: 0}
   attackCol: {fileID: 880456232}
   cameraMove: {fileID: 0}
+  hearts:
+  - {fileID: 21300000, guid: 270b3f580a1ad7a4e8f8d62aff381f4f, type: 3}
+  - {fileID: 21300000, guid: d16cf53a4d89870459c2e0ce0a8fe04e, type: 3}
+  - {fileID: 21300000, guid: ce68df9306a330e49bfee96aca5789bd, type: 3}
+  curHeart:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   jumpPower: 10
   walkSpeed: 5
   testDistance: 0.55
@@ -217,12 +225,16 @@ MonoBehaviour:
   currentSpeed: 0
   attackDelay: 0.5
   currentDelay: 0
+  hitDelay: 0.5
+  currentHitDelay: 0
   currentHp: 0
-  maxHp: 0
+  maxHp: 6
+  num: 0.6
   isJump: 0
   isGround: 0
   rightIsWall: 0
   leftIsWall: 0
+  isHit: 0
 --- !u!50 &6304144593885889571
 Rigidbody2D:
   serializedVersion: 4
