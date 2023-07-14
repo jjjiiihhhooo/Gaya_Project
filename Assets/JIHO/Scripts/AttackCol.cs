@@ -30,5 +30,13 @@ public class AttackCol : MonoBehaviour
             player.effect.SetActive(true);
             collision.GetComponent<Enermy>().GetDamage(damage);
         }
+        if (collision.CompareTag("Boss"))
+        {
+            Sound.instance.Play(Sound.instance.audioDictionary["Hit"], false);
+            player.effect.SetActive(false);
+            player.effect.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y, 5);
+            player.effect.SetActive(true);
+            collision.GetComponent<Boss>().BossGetDamage(damage);
+        }
     }
 }

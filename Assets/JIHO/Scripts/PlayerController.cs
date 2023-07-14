@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI deathCountText;
     public Vector3 startPos;
 
+    public Boss middleBoss;
 
     [Header("스테이터스")]
     public float jumpPower;
@@ -262,15 +263,20 @@ public class PlayerController : MonoBehaviour
         {
             if (currentHitDelay <= 0) GetDamage(collision.transform);
         }
+
+        if(collision.transform.CompareTag("Boss"))
+        {
+            if (currentHitDelay <= 0) GetDamage(collision.transform);
+        }
     }
 
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Enemy"))
-    //    {
-    //        if (currentHitDelay <= 0) GetDamage(collision.transform);
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BossStart"))
+        {
+            if(middleBoss.gameObject.activeSelf) middleBoss.BossStart();
 
-    //    }
-    //}
+        }
+    }
 }
