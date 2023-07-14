@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public Sprite[] hearts;
     public Image[] curHeart;
     public GameObject effect;
+    public TextMeshProUGUI deathCountText;
+    public Vector3 startPos;
+
 
     [Header("스테이터스")]
     public float jumpPower;
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed;
     public float attackDelay;
     public float currentDelay;
+
+    public int deathCount;
 
     public float hitDelay;
     public float currentHitDelay;
@@ -46,6 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraMove = FindObjectOfType<CameraMove>();
         currentHp = maxHp;
+        startPos = transform.position;
     }
 
     private void Update()
@@ -153,6 +160,7 @@ public class PlayerController : MonoBehaviour
 
     public void AttackCol()
     {
+        Sound.instance.Play(Sound.instance.audioDictionary["NoHit"], false);
         attackCol.SetActive(true);
     }
 
@@ -235,7 +243,13 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Die!!");
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        transform.position = startPos;
+        cameraMove.transform.position = startPos;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)

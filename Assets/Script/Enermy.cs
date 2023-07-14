@@ -130,6 +130,8 @@ public class Enermy : MonoBehaviour
     }
     protected virtual void GoBack()
     {
+        if (!isMove) return;
+
         float dir = spawnX - transform.position.x;
         if (dir < 0.5 && dir > -0.5)
         {
