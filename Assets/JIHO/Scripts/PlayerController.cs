@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public CameraMove cameraMove;
     public Sprite[] hearts;
     public Image[] curHeart;
+    public GameObject effect;
 
     [Header("스테이터스")]
     public float jumpPower;

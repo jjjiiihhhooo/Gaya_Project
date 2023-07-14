@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   damage: 1
+  player: {fileID: 6304144593885889583}
 --- !u!1 &6304144593885889576
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  effect: {fileID: 0}
   jumpPower: 10
   walkSpeed: 5
   testDistance: 0.55
