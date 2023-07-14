@@ -18,6 +18,7 @@ public class Enermy : MonoBehaviour
     public float test;
     public bool isMove;
     public bool isDamage;
+    public float num;
     
 
 
@@ -45,9 +46,16 @@ public class Enermy : MonoBehaviour
     public void GetDamage(float damage)
     {
         eAnimator.SetTrigger("Hit");
+        if (transform.position.x - target.position.x >= 0) transform.position = new Vector2(transform.position.x + num, transform.position.y);
+        else
+        {
+            transform.position = new Vector2(transform.position.x - num, transform.position.y);
+        }
         currentHp -= damage;
         if (currentHp <= 0) isDie = true;
     }
+
+
 
     private void Update()
     {

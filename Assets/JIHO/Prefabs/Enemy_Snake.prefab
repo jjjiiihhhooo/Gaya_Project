@@ -127,8 +127,9 @@ MonoBehaviour:
   maxHp: 3
   eAnimator: {fileID: 5772833565872041050}
   test: 0
-  isMove: 1
+  isMove: 0
   isDamage: 0
+  num: 0.3
 --- !u!50 &5772833565872041052
 Rigidbody2D:
   serializedVersion: 4

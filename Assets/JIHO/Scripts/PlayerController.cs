@@ -6,13 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public State<PlayerController> currentState;
 
-    public PlayerIdleState playerIdleState;
-    public PlayerWalkState playerWalkState;
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer;
     public Animator anim;
     public Vector3 playerVec;
     public GameObject attackCol;
+    public CameraMove cameraMove;
 
     [Header("스테이터스")]
     public float jumpPower;
@@ -25,16 +24,13 @@ public class PlayerController : MonoBehaviour
     public float attackDelay;
     public float currentDelay;
 
+    public float currentHp;
+    public float maxHp;
+
     public bool isJump;
     public bool isGround;
     public bool rightIsWall;
     public bool leftIsWall;
-
-
-    private void Awake()
-    {
-        Init();
-    }
 
     private void Update()
     {
@@ -66,7 +62,7 @@ public class PlayerController : MonoBehaviour
             rightIsWall = false;
         }
 
-        if(Physics2D.Raycast(transform.position, Vector2.left, rightDistance, testLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.left, rightDistance, testLayer))
         {
             Debug.Log("LeftWall");
             leftIsWall = true;
@@ -90,15 +86,6 @@ public class PlayerController : MonoBehaviour
             currentDelay -= Time.deltaTime;
         }
     }
-
-    private void Init()
-    {
-        playerIdleState = new PlayerIdleState();
-        playerWalkState = new PlayerWalkState();
-
-        currentState = playerIdleState;
-    }
-
     private void PlayerInput()
     {
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
@@ -109,12 +96,12 @@ public class PlayerController : MonoBehaviour
             }
             else anim.SetBool("isMove", true);
 
-            if (currentState.GetType() != typeof(PlayerWalkState)) StateChange(playerWalkState);
+            currentSpeed = walkSpeed;
         }
         else
         {
+            currentSpeed = 0;
             anim.SetBool("isMove", false);
-            if (currentState.GetType() != typeof(PlayerIdleState)) StateChange(playerIdleState);
         }
 
         if(Input.GetKeyDown(KeyCode.Z))
@@ -122,9 +109,9 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.X))
         {
-
+            if(isGround) Jump();
         }
     }
 
@@ -143,13 +130,14 @@ public class PlayerController : MonoBehaviour
         attackCol.SetActive(true);
     }
 
+    public void Jump()
+    {
+        rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+    }
+
     public void Move()
     {
-        
         float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        
 
         if (x < 0)
         {
@@ -163,21 +151,26 @@ public class PlayerController : MonoBehaviour
         }
         if (x > 0 && rightIsWall) x = 0;
         else if (x < 0 && leftIsWall) x = 0;
-        playerVec.x = x;
-        if(isGround) playerVec.y = y * jumpPower;
 
-        
+        rigid.velocity = new Vector2(x * currentSpeed, rigid.velocity.y);
 
-        transform.position += playerVec * currentSpeed * Time.fixedDeltaTime;
     }
 
     public void GetDamage()
     {
-
+        currentHp -= 1;
     }
 
     public void StateChange(State<PlayerController> newState)
     {
         newState.StateChange(this);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("CameraMove"))
+        {
+            
+        }
     }
 }
