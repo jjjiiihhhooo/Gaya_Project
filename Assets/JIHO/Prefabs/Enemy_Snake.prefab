@@ -126,10 +126,12 @@ MonoBehaviour:
   currentHp: 0
   maxHp: 3
   eAnimator: {fileID: 5772833565872041050}
-  test: 0
+  moveDelay: 1
+  currentDelay: 0
+  Pdistance: 5
   isMove: 0
   isDamage: 0
-  num: 0.3
+  num: 0.5
 --- !u!50 &5772833565872041052
 Rigidbody2D:
   serializedVersion: 4

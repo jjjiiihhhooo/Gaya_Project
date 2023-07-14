@@ -24,6 +24,7 @@ public class AttackCol : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
+            Sound.instance.Play(Sound.instance.audioDictionary["Hit"], false);
             player.effect.SetActive(false);
             player.effect.transform.position =new Vector3(collision.transform.position.x, collision.transform.position.y, 5);
             player.effect.SetActive(true);
