@@ -11,6 +11,14 @@ TagManager:
   - BossStart
   - Boss
   - Out
+  - middleCheck
+  - mable
+  - lastBoss
+  - fireball
+  - bg
+  - bg2
+  - bg3
+  - Start
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,7 @@ public class Boss_Middle_Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Platform"))
+        if(collision.CompareTag("middleCheck"))
         {
             downStop = true;
             Effect();

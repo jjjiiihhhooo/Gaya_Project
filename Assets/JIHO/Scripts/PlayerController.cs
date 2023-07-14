@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public GameObject effect;
     public TextMeshProUGUI lifeCountText;
     public GameObject out_obj;
+
+    public LastBoss last;
     public Vector3 startPos;
 
     public Boss middleBoss;
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
         AttackDelay();
         HitDelay();
         RayCast();
+        if(last != null) last.playerVec = transform.position;
     }
 
     private void HitDelay()
@@ -231,7 +234,7 @@ public class PlayerController : MonoBehaviour
             curHeart[1].sprite = hearts[2];
             curHeart[2].sprite = hearts[2];
             curHeart[0].sprite = hearts[2];
-            Die();
+            //Die();
         }
 
         if (transform.position.x - target.position.x >= 0) transform.position = new Vector2(transform.position.x + num, transform.position.y);
@@ -285,9 +288,30 @@ public class PlayerController : MonoBehaviour
             if (currentHitDelay <= 0) GetDamage(collision.transform);
         }
 
-        if(collision.transform.CompareTag("Boss"))
+        if (collision.transform.CompareTag("Boss"))
+        {
+            if (currentHitDelay <= 0)
+            {
+                GetDamage(collision.transform);
+                if (currentHp <= 0)
+                {
+                    collision.transform.GetComponent<Boss>().Init();
+                    Die();
+                    Sound.instance.Play(Sound.instance.audioDictionary["Start"], true);
+                }
+            }
+        }
+
+        if (collision.transform.CompareTag("lastBoss"))
         {
             if (currentHitDelay <= 0) GetDamage(collision.transform);
+        }
+        if (collision.transform.CompareTag("fireball"))
+        {
+            if (currentHitDelay <= 0)
+            {
+                if (collision != null) GetDamage(collision.transform);
+            }
         }
     }
 
@@ -303,6 +327,11 @@ public class PlayerController : MonoBehaviour
         if(collision.CompareTag("Out"))
         {
             Die();
+        }
+
+        if(collision.CompareTag("Start"))
+        {
+            cameraMove.isStart = true;
         }
     }
 }

@@ -22,20 +22,21 @@ public class Boss : Enermy
     public bool isAttack_2;
     public bool isCheck;
     public bool bossStart;
-    
+    public bool isDead;
 
     public float x;
 
 
     private void Awake()
     {
-        x = 0;
-        currentHp = maxHp;
-        bossStart = false;
+        
+        Init();
     }
 
     private void Update()
     {
+        if (isDead) return;
+
         if (!bossStart) return;
         if (isDie) BossDead();
         if (currentHp < 22) Attack_2_Ready();
@@ -50,10 +51,26 @@ public class Boss : Enermy
         StartCoroutine(BossCor());
     }
 
+    public void Init()
+    {
+        x = 0;
+        isLeft = false;
+        isAttack_1 = false;
+        isAttack_2 = false;
+        isCheck = false;
+        currentHp = maxHp;
+        bossWall_1.SetActive(false);
+        bossWall_2.SetActive(false);
+        bossStart = false;
+        cameraMove.isMiddlePos = false;
+        if(text != null) text.gameObject.SetActive(false);
+    }
+
     private IEnumerator BossCor()
     {
         
         yield return new WaitForSeconds(0.5f);
+        Sound.instance.Play(Sound.instance.audioDictionary["middle"], true);
         text.gameObject.SetActive(true);
         cameraMove.isMiddlePos = true;
         bossWall_1.SetActive(true);
@@ -68,7 +85,10 @@ public class Boss : Enermy
 
     private IEnumerator BossDeadCor()
     {
-        yield return new WaitForSeconds(0.5f);
+        isDead = true;
+        boss_anim.SetTrigger("Die");
+        yield return new WaitForSeconds(1.5f);
+        Sound.instance.Play(Sound.instance.audioDictionary["Start"], true);
         text.gameObject.SetActive(false);
         cameraMove.isMiddlePos = false;
         bossWall_2.SetActive(false);
@@ -152,7 +172,7 @@ public class Boss : Enermy
     public void Attack_2()
     {
         Debug.Log("µé¾î¿È");
-        int rand = Random.Range(93, 97);
+        int rand = Random.Range(158, 162);
         attackTitle.transform.position = new Vector3(rand, attackTitle.transform.position.y, attackTitle.transform.position.z);
         for(int i = 0; i < effects.Length; i++)
         {
