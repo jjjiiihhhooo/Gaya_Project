@@ -136,12 +136,12 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isMove", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             Attack();
         }
 
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.LeftAlt))
         {
             if(isGround) Jump();
         }
@@ -248,16 +248,29 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
+        currentHp = maxHp;
         transform.position = startPos;
         cameraMove.transform.position = startPos;
+        curHeart[0].sprite = hearts[0];
+        curHeart[1].sprite = hearts[0];
+        curHeart[2].sprite = hearts[0];
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Enemy"))
         {
             if (currentHitDelay <= 0) GetDamage(collision.transform);
-
         }
     }
+
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Enemy"))
+    //    {
+    //        if (currentHitDelay <= 0) GetDamage(collision.transform);
+
+    //    }
+    //}
 }
