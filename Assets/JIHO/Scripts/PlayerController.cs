@@ -237,9 +237,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x - num, transform.position.y);
         }
-
-        if (transform.position.y - target.position.y >= 0.2) transform.position = new Vector2(transform.position.x, transform.position.y + num * 1.5f);
-
         anim.SetTrigger("Hit");
         
     }
