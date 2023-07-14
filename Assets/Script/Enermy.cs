@@ -83,11 +83,11 @@ public class Enermy : MonoBehaviour
             transform.Translate(new Vector2(LR, 0) * curSpeed * Time.deltaTime);
             if (dir < 0) //플레이어가 왼쪽에 있을때
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-1, 3, 1);
             }
             else  //플레이어가 오른쪽에 있을때
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1, 3, 1);
             }
         }
         eAnimator.SetTrigger("Walk");
@@ -114,11 +114,11 @@ public class Enermy : MonoBehaviour
             transform.Translate(new Vector2(LR, 0) * curSpeed * Time.deltaTime * 3);
             if (dir < 0) //플레이어가 왼쪽에 있을때
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-1, 3, 1);
             }
             else  //플레이어가 오른쪽에 있을때
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1, 3, 1);
             }
         }
 
