@@ -7,7 +7,7 @@ public class UpDownBlock : MonoBehaviour
     public float moveY;
     public float delayTime;
     public float curSpeed;
-    private float curTime;
+    public float curTime;
     private int UD;
     private float FY;
 
