@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68afd9207cc559c42ab0cdbdcc03d672
+guid: 51c4daa0181b2d4449895e8321d8c1d2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,91 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Character-Idle_0
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5400417071284df46a7f0918d35901c1
-      internalID: 143394917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character-Idle_1
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 16
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac47ac64d09e8054298c5891eed9c9d8
-      internalID: -638147149
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character-Idle_2
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 16
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 355e5fd3d39b3e94294d8db4ef0032f7
-      internalID: -557518418
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character-Idle_3
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 16
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7d1b5abc0bb4454d9848dc8b30d7cd3
-      internalID: 1950858948
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -198,11 +114,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Character-Idle_0: 143394917
-      Character-Idle_1: -638147149
-      Character-Idle_2: -557518418
-      Character-Idle_3: 1950858948
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
