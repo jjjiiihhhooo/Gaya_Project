@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public State<PlayerController> currentState;
 
-    public PlayerIdleState playerIdleState;
-    public PlayerWalkState playerWalkState;
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer;
     public Animator anim;
     public Vector3 playerVec;
     public GameObject attackCol;
+    public CameraMove cameraMove;
+    public Sprite[] hearts;
+    public Image[] curHeart;
 
     [Header("스테이터스")]
     public float jumpPower;
@@ -25,22 +28,39 @@ public class PlayerController : MonoBehaviour
     public float attackDelay;
     public float currentDelay;
 
+    public float hitDelay;
+    public float currentHitDelay;
+
+    public float currentHp;
+    public float maxHp;
+    public float num;
+
     public bool isJump;
     public bool isGround;
     public bool rightIsWall;
     public bool leftIsWall;
-
+    public bool isHit;
 
     private void Awake()
     {
-        Init();
+        cameraMove = FindObjectOfType<CameraMove>();
+        currentHp = maxHp;
     }
 
     private void Update()
     {
         PlayerInput();
         AttackDelay();
+        HitDelay();
         RayCast();
+    }
+
+    private void HitDelay()
+    {
+        if (currentHitDelay >= 0)
+        {
+            currentHitDelay -= Time.deltaTime;
+        }
     }
 
     private void RayCast()
@@ -66,7 +86,7 @@ public class PlayerController : MonoBehaviour
             rightIsWall = false;
         }
 
-        if(Physics2D.Raycast(transform.position, Vector2.left, rightDistance, testLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.left, rightDistance, testLayer))
         {
             Debug.Log("LeftWall");
             leftIsWall = true;
@@ -90,15 +110,6 @@ public class PlayerController : MonoBehaviour
             currentDelay -= Time.deltaTime;
         }
     }
-
-    private void Init()
-    {
-        playerIdleState = new PlayerIdleState();
-        playerWalkState = new PlayerWalkState();
-
-        currentState = playerIdleState;
-    }
-
     private void PlayerInput()
     {
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
@@ -109,12 +120,12 @@ public class PlayerController : MonoBehaviour
             }
             else anim.SetBool("isMove", true);
 
-            if (currentState.GetType() != typeof(PlayerWalkState)) StateChange(playerWalkState);
+            currentSpeed = walkSpeed;
         }
         else
         {
+            currentSpeed = 0;
             anim.SetBool("isMove", false);
-            if (currentState.GetType() != typeof(PlayerIdleState)) StateChange(playerIdleState);
         }
 
         if(Input.GetKeyDown(KeyCode.Z))
@@ -122,9 +133,9 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.X))
         {
-
+            if(isGround) Jump();
         }
     }
 
@@ -132,6 +143,7 @@ public class PlayerController : MonoBehaviour
     public void Attack()
     {
         if (currentDelay > 0) return;
+        if (isHit) return;
         anim.SetTrigger("Attack");
         currentDelay = attackDelay;
 
@@ -143,13 +155,14 @@ public class PlayerController : MonoBehaviour
         attackCol.SetActive(true);
     }
 
+    public void Jump()
+    {
+        rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+    }
+
     public void Move()
     {
-        
         float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        
 
         if (x < 0)
         {
@@ -163,21 +176,73 @@ public class PlayerController : MonoBehaviour
         }
         if (x > 0 && rightIsWall) x = 0;
         else if (x < 0 && leftIsWall) x = 0;
-        playerVec.x = x;
-        if(isGround) playerVec.y = y * jumpPower;
 
+        rigid.velocity = new Vector2(x * currentSpeed, rigid.velocity.y);
+
+    }
+
+    public void GetDamage(Transform target)
+    {
+        currentHitDelay = hitDelay;
+        currentHp -= 1;
+        if (currentHp == 5)
+        {
+            curHeart[1].sprite = hearts[0];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[1];
+        }
+        else if(currentHp == 4)
+        {
+            curHeart[1].sprite = hearts[0];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 3)
+        {
+            curHeart[1].sprite = hearts[1];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 2)
+        {
+            curHeart[1].sprite = hearts[2];
+            curHeart[2].sprite = hearts[0];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 1)
+        {
+            curHeart[1].sprite = hearts[2];
+            curHeart[2].sprite = hearts[1];
+            curHeart[0].sprite = hearts[2];
+        }
+        else if (currentHp == 0)
+        {
+            curHeart[1].sprite = hearts[2];
+            curHeart[2].sprite = hearts[2];
+            curHeart[0].sprite = hearts[2];
+            Die();
+        }
+
+        if (transform.position.x - target.position.x >= 0) transform.position = new Vector2(transform.position.x + num, transform.position.y);
+        else
+        {
+            transform.position = new Vector2(transform.position.x - num, transform.position.y);
+        }
+        anim.SetTrigger("Hit");
         
-
-        transform.position += playerVec * currentSpeed * Time.fixedDeltaTime;
     }
 
-    public void GetDamage()
+    public void Die()
     {
-
+        Debug.Log("Die!!");
     }
-
-    public void StateChange(State<PlayerController> newState)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        newState.StateChange(this);
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            if (currentHitDelay <= 0) GetDamage(collision.transform);
+
+        }
     }
 }
