@@ -1,9 +1,11 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneEEE : MonoBehaviour
 {
+    public GameObject fade;
     public void LoadScene(string name = "StartMap")
     {
         SceneManager.LoadScene(name);
@@ -16,6 +18,13 @@ public class SceneEEE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) SceneManager.LoadScene("Boss");
+        if (collision.CompareTag("Player")) StartCoroutine(Cor());
+    }
+
+    private IEnumerator Cor()
+    {
+        fade.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Boss");
     }
 }

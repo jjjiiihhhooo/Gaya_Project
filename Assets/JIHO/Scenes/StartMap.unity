@@ -45165,6 +45165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6ca85c3ca396546967143fbe21660a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade: {fileID: 2043896500}
 --- !u!1 &1985774081
 GameObject:
   m_ObjectHideFlags: 0
@@ -45414,6 +45415,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2043896500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2043896500, guid: 4b3065ebada1d3b479dbba0c171b7662, type: 3}
+  m_PrefabInstance: {fileID: 2004962862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2127987496
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LastBoss : MonoBehaviour
 {
-    public static LastBoss instance;
+    
 
     
     public Vector3 playerVec;
@@ -25,24 +25,17 @@ public class LastBoss : MonoBehaviour
     public GameObject wall_1;
     public GameObject wall_2;
 
-
+    public GameObject whiteFade;
     public bool isStop;
     public bool isBoss;
     public bool isDead;
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
+        
             currentHp = maxHp;
-            BossStart();
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+            StartCoroutine(StartCor());
+        
     }
 
     public void BossStart()
@@ -51,6 +44,11 @@ public class LastBoss : MonoBehaviour
         Sound.instance.Play(Sound.instance.audioDictionary["last"], true);
     }
 
+    private IEnumerator StartCor()
+    {
+        yield return new WaitForSeconds(2f);
+        BossStart();
+    }
 
     private void Update()
     {
@@ -94,6 +92,7 @@ public class LastBoss : MonoBehaviour
     public void GetDamage()
     {
         currentHp--;
+        if (currentHp <= 0) Die();
     }
 
     public void Die()
@@ -107,6 +106,18 @@ public class LastBoss : MonoBehaviour
         isDead = true;
         yield return new WaitForSeconds(1.5f);
 
+    }
+
+    public void Fade()
+    {
+        StartCoroutine(FadeCor());
+    }
+
+    private IEnumerator FadeCor()
+    {
+        whiteFade.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        whiteFade.SetActive(false);
     }
 
     public void StopMove()

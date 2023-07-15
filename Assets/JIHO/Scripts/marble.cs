@@ -7,6 +7,7 @@ public class marble : MonoBehaviour
     public Vector3 idlePos;
     public Vector3 attackPos;
     public Vector3 endPos;
+    public LastBoss last;
 
     public float currentHp;
     public float maxHp;
@@ -32,8 +33,8 @@ public class marble : MonoBehaviour
             if(currentDelay < 0)
             {
                 currentDelay = fireDelay;
-                GameObject temp = Instantiate(LastBoss.instance.fireball, transform.position, quaternion.identity);
-                temp.GetComponent<fireball>().dir = LastBoss.instance.playerVec;
+                GameObject temp = Instantiate(last.fireball, transform.position, quaternion.identity);
+                temp.GetComponent<fireball>().dir = last.playerVec;
             }
             
 
@@ -71,7 +72,7 @@ public class marble : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, endPos, 0.1f);
             time += Time.deltaTime;
         }
-        LastBoss.instance.MarbleCount();
+        last.MarbleCount();
         maxHp++;
         this.gameObject.SetActive(false);
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -303,15 +304,22 @@ public class PlayerController : MonoBehaviour
 
         if (collision.transform.CompareTag("lastBoss"))
         {
-            if (currentHitDelay <= 0) GetDamage(collision.transform);
+            if (currentHitDelay <= 0)
+            {
+                GetDamage(collision.transform);
+                if (currentHp <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
-        if (collision.transform.CompareTag("fireball"))
+            if (collision.transform.CompareTag("fireball"))
         {
             if (currentHitDelay <= 0)
             {
-                if (collision != null) GetDamage(collision.transform);
-            }
-        }
+                if (collision != null)
+                {
+                    GetDamage(collision.transform);
+                    if (currentHp <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+        }  }
     }
 
 
