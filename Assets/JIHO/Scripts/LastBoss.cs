@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LastBoss : MonoBehaviour
@@ -23,6 +22,10 @@ public class LastBoss : MonoBehaviour
 
     public Rotate rotate;
 
+    public GameObject wall_1;
+    public GameObject wall_2;
+
+
     public bool isStop;
     public bool isBoss;
     public bool isDead;
@@ -33,6 +36,7 @@ public class LastBoss : MonoBehaviour
         {
             instance = this;
             currentHp = maxHp;
+            BossStart();
             DontDestroyOnLoad(this.gameObject);
         }
         else

@@ -1,13 +1,12 @@
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public State<PlayerController> currentState;
+    
 
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer;
@@ -323,8 +322,12 @@ public class PlayerController : MonoBehaviour
             if(middleBoss.gameObject.activeSelf) middleBoss.BossStart();
 
         }
+        if (collision.CompareTag("lastBossStart"))
+        {
+            last.BossStart();
+        }
 
-        if(collision.CompareTag("Out"))
+        if (collision.CompareTag("Out"))
         {
             Die();
         }

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class Bird : MonoBehaviour
@@ -24,7 +21,6 @@ public class Bird : MonoBehaviour
     public bool isMove;
     public bool isDamage;
     public float num;
-    float dir = 0;
     void Start()
     {
         currentHp = maxHp;

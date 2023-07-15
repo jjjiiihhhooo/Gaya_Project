@@ -19,6 +19,7 @@ TagManager:
   - bg2
   - bg3
   - Start
+  - lastBossStart
   layers:
   - Default
   - TransparentFX
