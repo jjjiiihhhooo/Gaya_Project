@@ -9,15 +9,15 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/JIHO/Scenes/Title.unity
+    path: Assets/Scene/Title.unity
     guid: fbe8640fec2c1274ababb3ed57005dfd
   - enabled: 1
-    path: Assets/JIHO/Scenes/StartMap.unity
+    path: Assets/Scene/Stage_1.unity
     guid: b9f25898a793aa144b320809471f3d2e
   - enabled: 1
     path: Assets/kimkyeom/Scenes/main2kimkyeomleveldsegin.unity
     guid: 3e167134504019c47ad57d64676df764
   - enabled: 1
-    path: Assets/JIHO/Scenes/Boss.unity
+    path: Assets/Scene/Boss_2.unity
     guid: 3533e5d4c57965947b9cab94c7942560
   m_configObjects: {}

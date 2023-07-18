@@ -86,10 +86,10 @@ GameObject:
   - component: {fileID: 6304144593885889581}
   - component: {fileID: 6304144593885889582}
   - component: {fileID: 6304144593885889583}
-  - component: {fileID: 6304144593885889571}
   - component: {fileID: 8313203766645416310}
-  - component: {fileID: 435819714}
-  m_Layer: 0
+  - component: {fileID: 5529159715674958281}
+  - component: {fileID: 5081289134306506583}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.065467596, y: 0.09166062}
+  m_Offset: {x: 0.07459462, y: -0.049806833}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -188,7 +188,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3470559, y: 0.43137145}
+  m_Size: {x: 0.4657061, y: 0.8055757}
   m_EdgeRadius: 0
 --- !u!114 &6304144593885889583
 MonoBehaviour:
@@ -197,12 +197,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6304144593885889576}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c061b776dc08443903dba62e3b0aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 6304144593885889571}
+  rigid: {fileID: 0}
   spriteRenderer: {fileID: 6304144593885889581}
   anim: {fileID: 8313203766645416310}
   playerVec: {x: 0, y: 0, z: 0}
@@ -217,8 +217,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   effect: {fileID: 0}
-  deathCountText: {fileID: 0}
+  lifeCountText: {fileID: 0}
+  out_obj: {fileID: 0}
+  last: {fileID: 0}
   startPos: {x: 0, y: 0, z: 0}
+  middleBoss: {fileID: 0}
   jumpPower: 10
   walkSpeed: 5
   testDistance: 0.55
@@ -229,7 +232,7 @@ MonoBehaviour:
   currentSpeed: 0
   attackDelay: 0.5
   currentDelay: 0
-  deathCount: 0
+  LifeCount: 0
   hitDelay: 0.5
   currentHitDelay: 0
   currentHp: 0
@@ -240,27 +243,6 @@ MonoBehaviour:
   rightIsWall: 0
   leftIsWall: 0
   isHit: 0
---- !u!50 &6304144593885889571
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6304144593885889576}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 2
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!95 &8313203766645416310
 Animator:
   serializedVersion: 5
@@ -282,19 +264,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &435819714
-CircleCollider2D:
+--- !u!114 &5529159715674958281
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6304144593885889576}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.07, y: -0.28}
-  serializedVersion: 2
-  m_Radius: 0.2
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9d41d78bb34a046bca0392f80fd7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  horizontalRayCount: 4
+  verticalRayCount: 4
+--- !u!114 &5081289134306506583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304144593885889576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21b00b8178405748afcf88f99aa1038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 4
+  timeToJumpApex: 0.4
+  velocity: {x: 0, y: 0, z: 0}
+  isStun: 0
+  isHit: 0

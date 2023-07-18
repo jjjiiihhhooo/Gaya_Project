@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class Boss : Enermy
+public class Boss : Enemy
 {
     public Animator boss_anim;
     public SpriteRenderer spr;
