@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -52,22 +53,26 @@ public class Enemy : MonoBehaviour
 
         RaycastHit2D RightHit = Physics2D.Raycast(nowPosition, Vector2.right, serchingDistance, layerMask);
         Debug.DrawLine(nowPosition, nowPosition + Vector2.right * serchingDistance, Color.red);
-        if (LeftHit) //탐지에 플레이어가 감지 되었으면
+        if (LeftHit.collider.gameObject.layer == 3) //탐지에 플레이어가 감지 되었으면
         {
+            target = LeftHit.collider.gameObject.transform;
             eAnimator.SetBool("Walk",true);
         }
-        if (RightHit)
+        if (RightHit.collider.gameObject.layer == 3)
         {
+            target = LeftHit.collider.gameObject.transform;
             eAnimator.SetBool("Walk",true);
         }
         if(!LeftHit && !RightHit)
         {
             eAnimator.SetBool("Walk", false);
         }
+        Move();
     }
+
+    
 
     protected virtual void Move()
     {
-        
     }
 }

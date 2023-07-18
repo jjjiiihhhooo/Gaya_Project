@@ -67,6 +67,10 @@ public class Player : MonoBehaviour
     {
         OnHit(collision);
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        OnHit(collision);
+    }
 
     public void OnHit(Collider2D collision)
     {
@@ -77,7 +81,8 @@ public class Player : MonoBehaviour
             input = Vector2.zero; // 적용되던 움직임을 멈춘다.
             controller.collisions.below = false; // 공중에 띄운다
             animator.SetBool("onHit", true); // 모션을 띄운다.
-            velocity = new Vector2(-30, 15); // 해당방향으로 날린다.
+            velocity = new Vector2(-5, 5); // 해당방향으로 날린다.
+            StartCoroutine("WaitStunTime");
         }
     }
     public void OnStun()
@@ -88,17 +93,18 @@ public class Player : MonoBehaviour
             isHit = false;
             Debug.Log("땅에 닿았다!");
             controller.collisions.below = true; // 땅에 붙었다.
-            animator.SetBool("onStun", true); // 모션을 띄운다.
             animator.SetBool("onHit", false); // 변수를 정리한다.
-            StartCoroutine("WaitStunTime");
+            isStun = false;
         }
     }
 
     IEnumerator WaitStunTime()
     {
+        animator.SetBool("Hit",true);
+        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         yield return new WaitForSeconds(4);
+        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         animator.SetBool("onStun", false); // 모션을 지운다.
-        isStun = false;
     }
 
     private void FlipX()

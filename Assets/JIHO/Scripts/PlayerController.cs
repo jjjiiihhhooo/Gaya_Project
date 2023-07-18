@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    
-
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer;
     public Animator anim;
@@ -27,13 +25,6 @@ public class PlayerController : MonoBehaviour
     public Boss middleBoss;
 
     [Header("스테이터스")]
-    public float jumpPower;
-    public float walkSpeed;
-    public float testDistance;
-    public float rightDistance;
-    public LayerMask testLayer;
-
-    public float currentSpeed;
     public float attackDelay;
     public float currentDelay;
 
@@ -64,7 +55,6 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
         AttackDelay();
         HitDelay();
-        RayCast();
         if(last != null) last.playerVec = transform.position;
     }
 
@@ -76,45 +66,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void RayCast()
-    {
-        if(Physics2D.Raycast(transform.position, Vector2.down, testDistance, testLayer))
-        {
-            Debug.Log("Ray");
-            isGround = true;
-        }
-        else
-        {
-            isGround = false;
-        }
-
-        if (Physics2D.Raycast(transform.position, Vector2.right, rightDistance, testLayer))
-        {
-            Debug.Log("RightWall");
-            rightIsWall = true;
-            leftIsWall = false;
-        }
-        else
-        {
-            rightIsWall = false;
-        }
-
-        if (Physics2D.Raycast(transform.position, Vector2.left, rightDistance, testLayer))
-        {
-            Debug.Log("LeftWall");
-            leftIsWall = true;
-            rightIsWall = false;
-        }
-        else
-        {
-            leftIsWall = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-    }
 
     private void AttackDelay()
     {
@@ -123,32 +74,12 @@ public class PlayerController : MonoBehaviour
             currentDelay -= Time.deltaTime;
         }
     }
+
     private void PlayerInput()
     {
-        if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
-        {
-            if (Input.GetAxisRaw("Vertical") != 0)
-            {
-                if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")) anim.SetTrigger("isJump");
-            }
-            else anim.SetBool("isMove", true);
-
-            currentSpeed = walkSpeed;
-        }
-        else
-        {
-            currentSpeed = 0;
-            anim.SetBool("isMove", false);
-        }
-
         if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             Attack();
-        }
-
-        if(Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            if(isGround) Jump();
         }
     }
 
@@ -167,32 +98,6 @@ public class PlayerController : MonoBehaviour
     {
         Sound.instance.Play(Sound.instance.audioDictionary["NoHit"], false);
         attackCol.SetActive(true);
-    }
-
-    public void Jump()
-    {
-        rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-    }
-
-    public void Move()
-    {
-        float x = Input.GetAxisRaw("Horizontal");
-
-        if (x < 0)
-        {
-            attackCol.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-            spriteRenderer.flipX = true;
-        }
-        else if(x > 0)
-        {
-            attackCol.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-            spriteRenderer.flipX = false;
-        }
-        if (x > 0 && rightIsWall) x = 0;
-        else if (x < 0 && leftIsWall) x = 0;
-
-        rigid.velocity = new Vector2(x * currentSpeed, rigid.velocity.y);
-
     }
 
     public void GetDamage(Transform target)

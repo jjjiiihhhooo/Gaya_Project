@@ -7,7 +7,7 @@ public class plx : MonoBehaviour
     public float scrollAmount;
     public float moveSpeed;
     public Vector3 moveDir;
-    public string name;
+    public string Name;
 
     public Transform right;
 
@@ -18,7 +18,7 @@ public class plx : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(name))
+        if (collision.CompareTag(Name))
             transform.position = right.position;
     }
 }
