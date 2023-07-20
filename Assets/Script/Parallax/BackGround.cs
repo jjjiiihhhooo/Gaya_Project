@@ -6,12 +6,12 @@ using UnityEngine.UIElements;
 
 public class BackGround : Parallax
 {
-    [SerializeField] Player player;
+    [SerializeField] Player_Move player;
     float input;
 
     private void Update()
     {
-        if(!player.isHit && !player.isStun)
+        if(!player.isStun)
         {
             input = Input.GetAxisRaw("Horizontal"); // 입력값 받기
         }
