@@ -4,6 +4,47 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*    public Animator boss_anim;
     public SpriteRenderer spr;
     public GameObject[] effects;
@@ -35,7 +76,6 @@ public class Boss : MonoBehaviour
     private void Update()
     {
         if (isDead) return;
-
         if (!bossStart) return;
         if (isDie) BossDead();
         if (currentHp < 22) Attack_2_Ready();
@@ -132,7 +172,6 @@ public class Boss : MonoBehaviour
             x = 1;
             isAttack_1 = true;
         }
-
     }
 
     public void BossGetDamage(float damage)

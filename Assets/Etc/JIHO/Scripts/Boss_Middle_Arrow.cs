@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Boss_Middle_Arrow : MonoBehaviour
 {
-/*    public bool downStop;
+    public bool downStop;
     public Vector3 startPos;
     Animator anim;
 
@@ -33,7 +33,7 @@ public class Boss_Middle_Arrow : MonoBehaviour
 
         if(collision.CompareTag("Player"))
         {
-            collision.transform.GetComponent<PlayerController>().GetDamage(this.transform);
+            //collision.transform.GetComponent<PlayerController>().GetDamage(this.transform);
         }
     }
 
@@ -52,5 +52,5 @@ public class Boss_Middle_Arrow : MonoBehaviour
     public void SetActive()
     {
         this.gameObject.SetActive(false);
-    }*/
+    }
 }

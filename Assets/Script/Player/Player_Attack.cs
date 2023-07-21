@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -26,12 +24,26 @@ public class Player_Attack : MonoBehaviour
 
     private void Update()
     {
+        float input = Input.GetAxisRaw("Horizontal"); // 입력값 받기
+        AttackSide(input);
         currentDelay -= Time.deltaTime;
         currentDelay = Mathf.Clamp(currentDelay, 0, attackDelay);
 
         if (Input.GetKeyDown(KeyCode.Z) && currentDelay == 0) // 공격버튼
         {
             StartCoroutine("Attack");
+        }
+    }
+
+    private void AttackSide(float _input)
+    {
+        if (_input == -1)
+        {
+            attackArea.gameObject.transform.localPosition = new Vector3(-1, 0, 0);
+        }
+        else
+        {
+            attackArea.gameObject.transform.localPosition = new Vector3(1, 0, 0);
         }
     }
 
@@ -42,10 +54,9 @@ public class Player_Attack : MonoBehaviour
 
         attackArea.SetActive(true); 
         animator.SetBool("isAttack", true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         attackArea.SetActive(false);
         animator.SetBool("isAttack", false);
-
     }
 }

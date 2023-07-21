@@ -7,12 +7,12 @@ public class HitPlayer : MonoBehaviour
     [Header("공격 쿨타임")]
     public float AtcCoolTime = 3;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("onhit");
-            PlayerStatus.Instance.HP -= 1;
+            Debug.Log("플레이어를 때렸다.");
             collision.gameObject.GetComponent<GetDamage>().OnHit();
             StartCoroutine("ICD");
         }

@@ -8,6 +8,10 @@ public class AttackCol : MonoBehaviour
         {
             collision.GetComponent<Enemy>().GetDamage(PlayerStatus.Instance.AtkDamage);
         }
+        if (collision.CompareTag("Boss"))
+        {
+            collision.GetComponent<Enemy>().GetDamage(PlayerStatus.Instance.AtkDamage);
+        }
     }
 }
 

@@ -19,12 +19,14 @@ public class GetDamage : MonoBehaviour
     Player_Move player_Move;
     Controller2D controller;
     Animator animator;
+
+    public HpUI UIUpdate;
+
     private void Start()
     {
         controller = GetComponent<Controller2D>();
         player_Move = GetComponent<Player_Move>();
-        animator = GetComponent<Animator>();
-    }
+        animator = GetComponent<Animator>();    }
 
     private void Update()
     {
@@ -36,14 +38,21 @@ public class GetDamage : MonoBehaviour
 
     public void OnHit()
     {
-        KnockbackY = Mathf.Abs(KnockbackY); // 무조건 양수
-        player_Move.isStun = true; // 입력을 못받게한다.
-        isHit = true; // 맞았다!
         Debug.Log("Player : 아프다!");
+        PlayerStatus.Instance.SetHp(-1); // 데미지를 입는다.
+
+        UIUpdate.UpdateUI(PlayerStatus.Instance.HP); // UI업데이트
+
+        KnockbackY = Mathf.Abs(KnockbackY); // 무조건 양수
+
+        player_Move.isStun = true; // 입력을 못받게한다.
+
+        isHit = true; // 맞았다!
         player_Move.input = Vector2.zero; // 적용되던 움직임을 멈춘다.
+
         controller.collisions.below = false; // 공중에 띄운다
-        animator.SetBool("isDamage", true); // 모션을 띄운다.
         player_Move.velocity = new Vector2(KnockbackX, KnockbackY); // 해당방향으로 날린다.
+
         StartCoroutine("WaitStunTime");
     }
 
