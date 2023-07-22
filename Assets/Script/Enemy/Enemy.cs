@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private GameObject Effect;
     [SerializeField] AudioClip Hit_sound; //맞는소리
 
-    protected virtual void Start()
+    public virtual void Start()
     {
         Effect = this.transform.GetChild(0).gameObject;
         animator = GetComponent<Animator>();
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         attackDelay = 0f;
     }
 
-    public void GetDamage(float damage)
+    public virtual void GetDamage(float damage)
     {
         Debug.Log(this.gameObject.name + " : 맞았다!");
         Sound.instance.Play(Hit_sound, false);
@@ -30,7 +30,13 @@ public class Enemy : MonoBehaviour
         if (currentHp <= 0)
         {
             this.gameObject.SetActive(false);
+            Die();
         }
+    }
+
+    public virtual void Die()
+    {
+
     }
 
     IEnumerator GetDamaged()

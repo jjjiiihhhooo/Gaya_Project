@@ -124,7 +124,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Patton01 0
+  - m_Name: Patton01
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -183,8 +183,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: Patton01 0
-    m_EventTreshold: 3
+    m_ConditionEvent: Patton01
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8289476554018104944}
   m_Solo: 0
@@ -208,7 +208,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: Patton01 0
+    m_ConditionEvent: Patton01
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2716830780175056683}
@@ -344,7 +344,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: Patton01 0
+    m_ConditionEvent: Patton01
     m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3333471332763805078}
