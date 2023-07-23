@@ -40,8 +40,7 @@ public class Player_Attack : MonoBehaviour
         if (_input == -1)
         {
             attackArea.gameObject.transform.localPosition = new Vector3(-1, 0, 0);
-        }
-        else
+        }else if (_input == 1)
         {
             attackArea.gameObject.transform.localPosition = new Vector3(1, 0, 0);
         }

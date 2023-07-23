@@ -14,4 +14,8 @@ public class Boss_Middle_Patton02 : MonoBehaviour
         Effect_02.SetActive(true);
         Effect_03.SetActive(true);
     }
+    private void OnDisable()
+    {
+        
+    }
 }

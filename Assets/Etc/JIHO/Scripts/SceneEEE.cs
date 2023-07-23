@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneEEE : MonoBehaviour
 {
     public GameObject fade;
-    public void LoadScene(string name = "StartMap")
+    public void LoadScene(string name = "Stage_1")
     {
         SceneManager.LoadScene(name);
     }

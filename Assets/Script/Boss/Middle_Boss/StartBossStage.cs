@@ -9,7 +9,7 @@ public class StartBossStage : MonoBehaviour
     [SerializeField] private GameObject player; // 플레이어
     [SerializeField] private GameObject BossStartText; // 시작시 보여지는 텍스트
     [SerializeField] private GameObject Boss; // 보스 오브젝트
-
+    [SerializeField] private GameObject BossSpawnPoint;
     //변수
     public bool isStart = false;
 
@@ -40,11 +40,15 @@ public class StartBossStage : MonoBehaviour
 
         BossStartText.SetActive(false);
         player.GetComponent<Player_Move>().enabled = true;
+        Boss.SetActive(true);
     }
 
     public void ResetStartBossStage()
     {
-        Debug.Log("aaaa");
+        RemoveWalls();
+        Boss.SetActive(false);
+        isStart = false;
+        
     }
 
     public void RemoveWalls()

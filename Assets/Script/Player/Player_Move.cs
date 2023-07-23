@@ -56,8 +56,8 @@ public class Player_Move : MonoBehaviour
         if (!isStun)
         {
             input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // 입력값 받기
+            FlipX();
         }
-        FlipX();
 
         if (Input.GetKeyDown(KeyCode.X) && controller.collisions.below && !isStun) // 땅에 발이 닿았을 경우 입력을 받고
         {
@@ -86,11 +86,6 @@ public class Player_Move : MonoBehaviour
         {
             animator.SetBool("isMove", true);
             this.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            animator.SetBool("isMove", false);
-            this.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 }
