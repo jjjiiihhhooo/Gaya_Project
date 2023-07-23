@@ -13,7 +13,7 @@ public class Boss_Middle : Enemy
     /// </summary>
     
     [SerializeField] private StartBossStage startBossStage; // 보스 시작알리미
-
+    [SerializeField] private GameObject Patton02_Arrow;
     //컴포넌트
     private Animator animator; // 애니메이션
 
@@ -34,8 +34,7 @@ public class Boss_Middle : Enemy
     public override void Start()
     {
         base.Start();
-        //StartCoroutine("Patton_01");
-
+        StartCoroutine("Patton_01");
     }
 
     private void Update()
@@ -72,12 +71,20 @@ public class Boss_Middle : Enemy
         }
     }
     #endregion
+
     #region Patton_02
     IEnumerator Patton_02()
     {
-        yield return new WaitForSeconds(1);
+        animator.SetBool("Patton02", true);
+        yield return new WaitForSeconds(2.5f);
+        animator.SetBool("Patton02", false);
+        Patton02_Arrow.SetActive(true);
+        yield return new WaitForSeconds(6.0f);
+        Patton02_Arrow.SetActive(false);
     }
+
     #endregion
+
     public override void Die()
     {
         startBossStage.RemoveWalls(); // 스테이지 클리어

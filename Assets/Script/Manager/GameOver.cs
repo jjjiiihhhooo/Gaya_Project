@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject out_obj;
     [SerializeField] TextMeshProUGUI lifeCountText;
     [SerializeField] GameObject Player;
+    public UnityEvent ResetStage;
+
     public void Die()
     {
         Player.transform.position = PlayerStatus.Instance.SavePoint;
         StartCoroutine(DieCor());
+        ResetStage.Invoke();
     }
 
     private IEnumerator DieCor()
@@ -33,4 +37,5 @@ public class GameOver : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         out_obj.SetActive(false);
     }
+
 }

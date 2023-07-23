@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,7 +13,7 @@ public class HitPlayer : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("플레이어를 때렸다.");
+            Debug.Log(name + " : 플레이어를 때렸다.");
             collision.gameObject.GetComponent<GetDamage>().OnHit(); //플레이어 대미지
             StartCoroutine("ICD"); // 내부쿨타임 시작
         }

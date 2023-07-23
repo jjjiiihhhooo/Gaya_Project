@@ -1,26 +1,21 @@
 
+using System.Collections;
 using UnityEngine;
 
 public class Boss_Middle_Effect : MonoBehaviour
 {
-    public float time;
     public GameObject arrow;
 
     private void OnEnable()
     {
-        time = 0;
+        StartCoroutine("Shot");
     }
 
-    private void Update()
+    IEnumerator Shot()
     {
-        if (time < 2f)
-        {
-            time += Time.deltaTime;
-        }
-        else
-        {
-            arrow.SetActive(true);
-            this.gameObject.SetActive(false);
-        }
+        this.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        arrow.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

@@ -42,6 +42,11 @@ public class StartBossStage : MonoBehaviour
         player.GetComponent<Player_Move>().enabled = true;
     }
 
+    public void ResetStartBossStage()
+    {
+        Debug.Log("aaaa");
+    }
+
     public void RemoveWalls()
     {
         for(int i = 0; i < Walls.Length; i++)
