@@ -59,7 +59,7 @@ public class Player_Move : MonoBehaviour
         }
         FlipX();
 
-        if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below && !isStun) // 땅에 발이 닿았을 경우 입력을 받고
+        if (Input.GetKeyDown(KeyCode.X) && controller.collisions.below && !isStun) // 땅에 발이 닿았을 경우 입력을 받고
         {
             animator.SetBool("isJump", true);
             velocity.y = jumpVelocity;
