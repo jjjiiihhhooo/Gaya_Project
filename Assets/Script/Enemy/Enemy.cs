@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     protected float curSpeed, attackDelay;
+    public Enemy_Move move;
 
     public float currentHp; // 현재 체력
     public float maxHp; // 최대 체력
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Start()
     {
+        move = GetComponent<Enemy_Move>();
         Effect = this.transform.GetChild(0).gameObject;
         animator = GetComponent<Animator>();
         currentHp = maxHp;
@@ -43,7 +45,9 @@ public class Enemy : MonoBehaviour
     {
         Effect.SetActive(true); // 이펙트 표시
         animator.SetBool("isDamage", true);
-        yield return new WaitForSeconds(1f);
+        move.enabled = false;
+        yield return new WaitForSeconds(0.4f);
+        move.enabled = true;
         animator.SetBool("isDamage", false);
         Effect.SetActive(false); // 이펙트 표시
     }

@@ -51,10 +51,10 @@ public class Player_Attack : MonoBehaviour
     {
         Sound.instance.Play(attackSound, false); // »ç¿îµå
         currentDelay = attackDelay; // ÄðÅ¸ÀÓ
-
+        Debug.Log("¶§·Çµû!");
         attackArea.SetActive(true); 
         animator.SetBool("isAttack", true);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         attackArea.SetActive(false);
         animator.SetBool("isAttack", false);
