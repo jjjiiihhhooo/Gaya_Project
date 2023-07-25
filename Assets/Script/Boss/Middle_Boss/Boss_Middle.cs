@@ -18,7 +18,6 @@ public class Boss_Middle : Enemy
     [SerializeField] private int ChangePattonHP = 10;
     private bool isMove = false; // ¿òÁ÷ÀÓ
     private bool onPatton = false;
-    private bool isClear = false;
 
     private void OnEnable()
     {

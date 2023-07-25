@@ -25,9 +25,9 @@ public class PlatformController : RaycastController
 
         Vector3 velocity = move * Time.deltaTime;
 
+        topDownPos();
         MovePassngers(velocity);
         transform.Translate(velocity);
-
     }
 
     void topDownPos()
@@ -111,6 +111,7 @@ public class PlatformController : RaycastController
                 {
                     if (!movedPassngers.Contains(hit.transform))
                     {
+                        Debug.Log("옴겨지는중");
                         movedPassngers.Add(hit.transform);
                         float pushX = velocity.x;
                         float pushY = velocity.y;

@@ -10,9 +10,8 @@ public class Enemy_Bird : Enemy
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Die()
     {
-        
+        gameObject.SetActive(false);
     }
 }

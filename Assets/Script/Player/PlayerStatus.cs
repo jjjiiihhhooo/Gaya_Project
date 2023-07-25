@@ -34,6 +34,7 @@ public class PlayerStatus : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private HpUI HPUI;
     [SerializeField] private GameOver gameOver;
     public int HP = 6;
     public int MaxHp = 6;
@@ -54,8 +55,10 @@ public class PlayerStatus : MonoBehaviour
         if( HP <= 0 ) // 체력이 0이면
         {
             HP = MaxHp;
+            HPUI.UpdateUI(HP);
             LifeCount -= 1; // 전체목숨 하나 감소
             gameOver.Die();
+
             if ( LifeCount <= 0) // 진짜 게임 오버
             {
                 Debug.Log("게임 끝! 처음부터!");
