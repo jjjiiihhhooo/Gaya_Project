@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+[RequireComponent(typeof(Animator))]
 public class Enemy_Move : MonoBehaviour
 {
- 
     public Vector3 StartPoint;
     public float MoveSpeed = 1;
 

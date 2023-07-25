@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class PlatformController : RaycastController
 {
     public LayerMask PassengerMask;
     public Vector3 move;
+
+
+    [Header("최대한계 높이와 하한높이")]
+    public float TopPosition;
+    public float DownPosition;
+    public float MoveSpeed;
 
     public override void Start()
     {
@@ -20,6 +27,19 @@ public class PlatformController : RaycastController
 
         MovePassngers(velocity);
         transform.Translate(velocity);
+
+    }
+
+    void topDownPos()
+    {
+        if(this.gameObject.transform.position.y > TopPosition)
+        {
+            move.y = -MoveSpeed;
+        }
+        if(this.gameObject.transform.position.y < DownPosition)
+        {
+            move.y = MoveSpeed;
+        }
     }
 
     void MovePassngers(Vector3 velocity)
@@ -37,7 +57,7 @@ public class PlatformController : RaycastController
             {
                 Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft; // 방향을 결정
                 rayOrigin += Vector2.right * (verticalRaySpacing * i);
-                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask); // 시작, 방향, 길이, 레이어마스크
+                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, PassengerMask); // 시작, 방향, 길이, 레이어마스크
                 if (hit)
                 {
                     if (!movedPassngers.Contains(hit.transform))

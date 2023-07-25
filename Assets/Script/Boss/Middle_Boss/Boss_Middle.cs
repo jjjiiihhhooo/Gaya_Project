@@ -14,7 +14,8 @@ public class Boss_Middle : Enemy
     [Header("돌진패턴 변수 스피드, 이동시간")]
     [SerializeField] private float MoveSpeed = 1;
     [SerializeField] private float MoveRange = 1;
-    
+
+    [SerializeField] private int ChangePattonHP = 10;
     private bool isMove = false; // 움직임
     private bool onPatton = false;
     private bool isClear = false;
@@ -41,7 +42,15 @@ public class Boss_Middle : Enemy
 
         if (!onPatton)
         {
-            int rand = Random.Range(0, 2);
+            int rand;
+            if (currentHp < ChangePattonHP) // 체력이 일정이하일경우 다른패턴이 나온다.
+            {
+                rand = Random.Range(0, 2); // 돌진패턴 or 활패턴
+            }
+            else
+            {
+                rand = 0; // 돌진패턴
+            }
             if (rand == 0)
             {
                 StartCoroutine("Patton_01");
