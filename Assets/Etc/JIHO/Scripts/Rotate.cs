@@ -12,7 +12,6 @@ public class Rotate : MonoBehaviour
         {
             marbles[i].isRotate = true;
         }
-        
     }
 
     private IEnumerator RotateCor()
@@ -24,7 +23,5 @@ public class Rotate : MonoBehaviour
                 time += Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
-
-        
     }
 }

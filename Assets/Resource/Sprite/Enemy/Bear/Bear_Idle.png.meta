@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37ee3e9ce90a2c546b038f9b52dfc5c4
-      internalID: -1758823806
+      spriteID: e8e548dce14602e46a25f56aac4c2f92
+      internalID: 346511132
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 506d561edb018c44daef51de26b76d9b
-      internalID: 2091558031
+      spriteID: 9923dbaf321b4c94bbafc568d99dbf43
+      internalID: 1980734604
       vertices: []
       indices: 
       edges: []
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bear_Idle_0: -1758823806
-      Bear_Idle_1: 2091558031
+      Bear_Idle_0: 346511132
+      Bear_Idle_1: 1980734604
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

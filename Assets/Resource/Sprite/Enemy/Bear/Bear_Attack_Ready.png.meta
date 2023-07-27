@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f1a759c8db8f49d4ebf9cc6973a355ab
+guid: a94154193836f9844b0ddf67d00c40a3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack effect-sheet_0
+      name: Bear_Attack_Ready_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 56
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07efe86bb74ee6c41aca90acebc863ee
-      internalID: 155710248
+      spriteID: 829c9990ddb58f4429b9b35a931378f4
+      internalID: -1668591010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack effect-sheet_1
+      name: Bear_Attack_Ready_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 56
         y: 0
-        width: 32
-        height: 32
+        width: 56
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9e744f14ad8943418e7b06a69a7244a
-      internalID: -629291005
+      spriteID: 04242cd5a5ef5fe42b3df9f2b6985142
+      internalID: -1557066229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack effect-sheet_2
+      name: Bear_Attack_Ready_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 112
         y: 0
-        width: 32
-        height: 32
+        width: 56
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,29 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 470b57b5c89fe454684f157b0b1bb19b
-      internalID: 637627334
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack effect-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d900c65ee9b6a8478b4facb99a7b90b
-      internalID: -721784957
+      spriteID: e801d02555e902f40a4b6ac313c41cfc
+      internalID: 146877258
       vertices: []
       indices: 
       edges: []
@@ -199,10 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack effect-sheet_0: 155710248
-      Attack effect-sheet_1: -629291005
-      Attack effect-sheet_2: 637627334
-      Attack effect-sheet_3: -721784957
+      Bear_Attack_Ready_0: -1668591010
+      Bear_Attack_Ready_1: -1557066229
+      Bear_Attack_Ready_2: 146877258
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

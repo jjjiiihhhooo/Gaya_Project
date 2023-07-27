@@ -60,6 +60,7 @@ public class GetDamage : MonoBehaviour
     {
         animator.SetBool("isDamage", true);
         yield return new WaitForSeconds(onHitTime);
+        animator.SetBool("isDamage", false); // 변수를 정리한다.
     }
 
 
@@ -69,6 +70,5 @@ public class GetDamage : MonoBehaviour
         controller.collisions.below = true; // 땅에 붙었다.
         player_Move.isStun = false;
         isHit = false;
-        animator.SetBool("isDamage", false); // 변수를 정리한다.
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HitPlayer : MonoBehaviour
 {
-    [Header("°ø°İ ÄğÅ¸ÀÓ")]
+    [Header("¸ö¿¡ ºÎµóÈ÷´Â °ø°İ ÄğÅ¸ÀÓ")]
     public float AtcCoolTime = 3;
 
     private void OnTriggerEnter2D(Collider2D collision)

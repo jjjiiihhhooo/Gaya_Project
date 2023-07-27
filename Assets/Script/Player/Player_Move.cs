@@ -87,5 +87,9 @@ public class Player_Move : MonoBehaviour
             animator.SetBool("isMove", true);
             this.GetComponent<SpriteRenderer>().flipX = true;
         }
+        else
+        {
+            animator.SetBool("isMove", false);
+        }
     }
 }

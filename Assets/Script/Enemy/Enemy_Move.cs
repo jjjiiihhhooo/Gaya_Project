@@ -15,7 +15,7 @@ public class Enemy_Move : MonoBehaviour
     [SerializeField] private float GroundDistance = 0.5f;
 
     [Header("레이어 마스크")]
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask TargetlayerMask;
     [SerializeField] private LayerMask GroundlayerMask;
     Vector2 nowPosition;
     private Animator eAnimator; // 애니메이션 컨트롤러
@@ -53,10 +53,10 @@ public class Enemy_Move : MonoBehaviour
     public void DetectPlayer()
     {
 
-        RaycastHit2D LeftHit = Physics2D.Raycast(nowPosition, Vector2.left, serchingDistance, layerMask);
+        RaycastHit2D LeftHit = Physics2D.Raycast(nowPosition, Vector2.left, serchingDistance, TargetlayerMask);
         Debug.DrawLine(nowPosition, nowPosition + Vector2.left * serchingDistance, Color.red);
 
-        RaycastHit2D RightHit = Physics2D.Raycast(nowPosition, Vector2.right, serchingDistance, layerMask);
+        RaycastHit2D RightHit = Physics2D.Raycast(nowPosition, Vector2.right, serchingDistance, TargetlayerMask);
         Debug.DrawLine(nowPosition, nowPosition + Vector2.right * serchingDistance, Color.red);
 
 

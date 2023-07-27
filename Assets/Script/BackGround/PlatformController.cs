@@ -98,7 +98,7 @@ public class PlatformController : RaycastController
         }
 
         // 승객이 플랫폼 위에 있으면
-        if (directionY == -1 || velocity.y == 0 && velocity.x != 0)
+        if (directionY == -1 || velocity.y == 0 && velocity.x != 0) // 아래쪽으로 좌우로 움직이는경우 
         {
             float rayLength = skinWidth * 2;
 
@@ -111,7 +111,7 @@ public class PlatformController : RaycastController
                 {
                     if (!movedPassngers.Contains(hit.transform))
                     {
-                        Debug.Log("옴겨지는중");
+                        Debug.Log(hit.collider.gameObject.name + "옴겨지는중");
                         movedPassngers.Add(hit.transform);
                         float pushX = velocity.x;
                         float pushY = velocity.y;
