@@ -111,7 +111,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 56
-        height: 44
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 829c9990ddb58f4429b9b35a931378f4
-      internalID: -1668591010
+      spriteID: 47ecda81f27b9a940ba4c8745b607173
+      internalID: -1435156410
       vertices: []
       indices: 
       edges: []
@@ -132,7 +132,7 @@ TextureImporter:
         x: 56
         y: 0
         width: 56
-        height: 44
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04242cd5a5ef5fe42b3df9f2b6985142
-      internalID: -1557066229
+      spriteID: 954a178e50163844fa73924bc5f83fb2
+      internalID: 670026815
       vertices: []
       indices: 
       edges: []
@@ -153,7 +153,7 @@ TextureImporter:
         x: 112
         y: 0
         width: 56
-        height: 44
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e801d02555e902f40a4b6ac313c41cfc
-      internalID: 146877258
+      spriteID: 16dfbed0fd5454544a267921769c3eba
+      internalID: 1047074993
       vertices: []
       indices: 
       edges: []
@@ -178,9 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bear_Attack_Ready_0: -1668591010
-      Bear_Attack_Ready_1: -1557066229
-      Bear_Attack_Ready_2: 146877258
+      Bear_Attack_Ready_0: -1435156410
+      Bear_Attack_Ready_1: 670026815
+      Bear_Attack_Ready_2: 1047074993
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

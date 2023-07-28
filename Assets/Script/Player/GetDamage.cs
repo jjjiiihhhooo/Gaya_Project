@@ -20,10 +20,11 @@ public class GetDamage : MonoBehaviour
     Controller2D controller;
     Animator animator;
 
-    public HpUI UIUpdate;
+    private HpUI UIUpdate;
 
     private void Start()
     {
+        UIUpdate = GameObject.FindAnyObjectByType<HpUI>();
         controller = GetComponent<Controller2D>();
         player_Move = GetComponent<Player_Move>();
         animator = GetComponent<Animator>();    }

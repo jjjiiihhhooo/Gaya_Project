@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Effect : MonoBehaviour
 {
-    public Animator animator;
+    private Animator animator;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {

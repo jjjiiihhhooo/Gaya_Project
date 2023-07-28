@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class AttackCol : MonoBehaviour
 {
+    Enemy co;
     private void OnTriggerEnter2D(Collider2D collision) //공격 영역에 들어온것
     {
         if(collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().GetDamage(PlayerStatus.Instance.AtkDamage);
+            co = collision.GetComponent<Enemy>();
+            if (co != null)
+            {
+                collision.GetComponent<Enemy>().GetDamage(PlayerStatus.Instance.AtkDamage);
+            }
         }
         if (collision.CompareTag("Boss"))
         {

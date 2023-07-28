@@ -51,8 +51,8 @@ public class PlayerStatus : MonoBehaviour
     public void SetHp(int _Hp)
     {
         HP += _Hp; // 체력을 바꾼다
-
-        if( HP <= 0 ) // 체력이 0이면
+        HPUI.UpdateUI(HP);
+        if ( HP <= 0 ) // 체력이 0이면
         {
             HP = MaxHp;
             HPUI.UpdateUI(HP);

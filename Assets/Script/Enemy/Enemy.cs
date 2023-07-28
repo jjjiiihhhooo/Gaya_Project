@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public float maxHp; // 최대 체력
     public Animator animator; // 애니메이션 컨트롤러
     private GameObject Effect;
-    [SerializeField] AudioClip Hit_sound; //맞는소리
+    [SerializeField] public AudioClip Hit_sound; //맞는소리
 
     public virtual void Start()
     {

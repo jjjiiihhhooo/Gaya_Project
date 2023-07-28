@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: af987cb15bfebfa41b6ec19b9c615205
+guid: 81e85ef2270b96b4397a671cf0852fe7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_Fire_Ball_0
+      name: Boss_Finish_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 64
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58dc6aca00bee8944bf6612b09b1e878
-      internalID: 1503049013
+      spriteID: 883bcc1d656971b49982ceb4d7d05dcf
+      internalID: -527772722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Fire_Ball_1
+      name: Boss_Finish_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 192
         y: 0
-        width: 32
-        height: 64
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50946829f8d1e9b4bb0f9bdf4fa4e98e
-      internalID: -1323892067
+      spriteID: c28cde392f7c68c40887f0b4aade11cc
+      internalID: -1340967212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Fire_Ball_2
+      name: Boss_Finish_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 384
         y: 0
-        width: 32
-        height: 64
+        width: 192
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +161,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8ded613bd3ed0c4bb870c784931aeb3
-      internalID: 1058226867
+      spriteID: edbc869c61f1614479d00889e3bdc730
+      internalID: -1322578587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Finish_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c63c53ee44adf3c448d72138542f5ffb
+      internalID: 1696840681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Finish_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2b367cb51cd8c43a30ec8b7a5163ab
+      internalID: 1794237111
       vertices: []
       indices: 
       edges: []
@@ -178,9 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boss_Fire_Ball_0: 1503049013
-      Boss_Fire_Ball_1: -1323892067
-      Boss_Fire_Ball_2: 1058226867
+      Boss_Finish_0: -527772722
+      Boss_Finish_1: -1340967212
+      Boss_Finish_2: -1322578587
+      Boss_Finish_3: 1696840681
+      Boss_Finish_4: 1794237111
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

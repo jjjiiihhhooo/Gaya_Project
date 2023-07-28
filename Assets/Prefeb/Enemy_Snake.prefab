@@ -176,9 +176,9 @@ MonoBehaviour:
   Target: {fileID: 0}
   serchingDistance: 9
   GroundDistance: 0.5
-  layerMask:
+  TargetlayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   GroundlayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 5509681964861007566}
   - component: {fileID: 5509681964861007564}
   - component: {fileID: 5509681964861007567}
+  - component: {fileID: 3585803989277923796}
   m_Layer: 0
   m_Name: Effect
   m_TagString: Untagged
@@ -317,3 +318,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3585803989277923796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509681964861007561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e77396fc079eb48826bd2d3b3ed9cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5509681964861007567}

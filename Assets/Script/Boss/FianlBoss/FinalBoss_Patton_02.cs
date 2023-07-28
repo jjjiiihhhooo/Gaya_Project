@@ -8,17 +8,21 @@ public class FinalBoss_Patton_02 : MonoBehaviour
 {
     public float radius = 2.0f;
     public float SpinSpeed = 10.0f;
-    void Start()
+    private void OnEnable() // 자리잡고 회전시키기
     {
         SetMiniBossPos();
+        for(int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(true); // 모든 게임오브젝트 살리기
+        }
     }
 
-    void Update()
+    void Update() // 계속 회전시킨다.
     {
-        this.gameObject.transform.Rotate(new Vector3(0, 0, SpinSpeed) * Time.deltaTime);
+        this.gameObject.transform.Rotate(new Vector3(0, 0, SpinSpeed) * Time.deltaTime); // 계속 회전시킨다.
     }
 
-    private void SetMiniBossPos()
+    private void SetMiniBossPos() // 일정거리만큼 벌린다.
     {
         int numOfChild = transform.childCount;
 
@@ -33,7 +37,7 @@ public class FinalBoss_Patton_02 : MonoBehaviour
         }
     }
 
-    public bool isEndPatton_02()
+    public bool isEndPatton_02() // 패턴이 끝났는가?
     {
         int numOfChild = transform.childCount;
         int count = 0;

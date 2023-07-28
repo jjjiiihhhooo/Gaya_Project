@@ -8,14 +8,20 @@ using UnityEngine;
 public class StartBossStage : MonoBehaviour
 {
     [SerializeField] private GameObject[] Walls; // 시작시 생기는 벽
-    [SerializeField] private GameObject player; // 플레이어
-    [SerializeField] private GameObject BossStartText; // 시작시 보여지는 텍스트
+    private GameObject player; // 플레이어
+    private GameObject BossStartText; // 시작시 보여지는 텍스트
     [SerializeField] private GameObject Boss; // 보스 오브젝트
     [SerializeField] private GameObject BossSpawnPoint;
-    [SerializeField] private Transform BossCamera;
+    [SerializeField] private Transform BossCameraPos;
     [SerializeField] private GameObject Camera;
     //변수
     public bool isStart = false;
+
+    public void Start()
+    {
+        player = GameObject.Find("Player");
+        BossStartText = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,23 +31,22 @@ public class StartBossStage : MonoBehaviour
             {
                 isStart = true;
                 player.GetComponent<Player_Move>().enabled = false; // 못움직이게 함
-                StartCoroutine("ReadyMiddleBoss");
+                StartCoroutine("ReadyBoss");
             }
         }
     }
 
-    IEnumerator ReadyMiddleBoss()
+    IEnumerator ReadyBoss()
     {
         BossStartText.SetActive(true);
-        Walls[0].gameObject.SetActive(true);
-        Camera.GetComponent<CinemachineVirtualCamera>().Follow = BossCamera.transform;
-        yield return new WaitForSeconds(1);
+        Camera.GetComponent<CinemachineVirtualCamera>().Follow = BossCameraPos.transform;
 
-        Walls[1].gameObject.SetActive(true);
-        yield return new WaitForSeconds(1);
 
-        Walls[2].gameObject.SetActive(true);
-        yield return new WaitForSeconds(1);
+        for (int i = 0; i < Walls.Length; i++)
+        {
+            Walls[i].gameObject.SetActive(true);
+            yield return new WaitForSeconds(1);
+        }
 
         BossStartText.SetActive(false);
         player.GetComponent<Player_Move>().enabled = true;
@@ -49,6 +54,7 @@ public class StartBossStage : MonoBehaviour
         Boss.transform.position = BossSpawnPoint.transform.position;
         Boss.GetComponent<SpriteRenderer>().flipX = false;
     }
+
 
     public void ResetStartBossStage()
     {
