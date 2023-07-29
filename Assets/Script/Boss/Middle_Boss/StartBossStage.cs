@@ -16,11 +16,15 @@ public class StartBossStage : MonoBehaviour
     [SerializeField] private GameObject Camera;
     //변수
     public bool isStart = false;
+    private GameOver gameOver;
+    
 
     public void Start()
     {
         player = GameObject.Find("Player");
         BossStartText = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        gameOver = GameObject.Find("GameManager").GetComponent<GameOver>();
+        gameOver.ResetStage.AddListener(ResetStartBossStage);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,9 +62,9 @@ public class StartBossStage : MonoBehaviour
 
     public void ResetStartBossStage()
     {
-        RemoveWalls();
-        Boss.SetActive(false);
-        isStart = false;
+        RemoveWalls(); // 벽치우기
+        Boss.SetActive(false); // 보스끄기
+        isStart = false; // 시작 다시
     }
 
     public void RemoveWalls()

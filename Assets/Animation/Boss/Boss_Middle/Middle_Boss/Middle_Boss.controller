@@ -88,7 +88,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Boss_Middle_Patton_01_Ready
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4712740852701196381}
@@ -397,7 +397,7 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8312834286697594226}
-    m_Position: {x: 260, y: 310, z: 0}
+    m_Position: {x: 270, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3333471332763805078}
     m_Position: {x: 30, y: 220, z: 0}

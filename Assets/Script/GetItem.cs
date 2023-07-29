@@ -26,6 +26,9 @@ public class GetItem : MonoBehaviour
     //Player_Get_Item_Final01
     //Player_Get_Item_Final02
 
+    [Header("클리어시 지워줘야함")]
+    [SerializeField] GameObject gameover;
+
     private void Start()
     {
         player = GameObject.Find("Player");
@@ -41,6 +44,8 @@ public class GetItem : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
+                gameover = GameObject.Find("GameManager");
+                gameover.GetComponent<GameOver>().ResetStage.RemoveAllListeners();
                 fade = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
                 StartCoroutine("GetItemAnimation");
             }
