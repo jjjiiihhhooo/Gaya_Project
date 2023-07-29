@@ -9,6 +9,7 @@ public class Boss_Middle : Enemy
     
     [SerializeField] private StartBossStage startBossStage; // 보스 시작알리미
     [SerializeField] private GameObject Patton02_Arrow;
+    [SerializeField] private GameObject MiddleBossItem;
 
     //변수
     [Header("돌진패턴 변수 스피드, 이동시간")]
@@ -41,26 +42,16 @@ public class Boss_Middle : Enemy
 
         if (!onPatton)
         {
-            int rand;
             if (currentHp < ChangePattonHP) // 체력이 일정이하일경우 다른패턴이 나온다.
             {
-                rand = Random.Range(0, 2); // 돌진패턴 or 활패턴
+                StartCoroutine("Patton_02"); // 활쏘고 돌진
             }
             else
             {
-                rand = 0; // 돌진패턴
-            }
-            if (rand == 0)
-            {
-                StartCoroutine("Patton_01");
-            }
-            else
-            {
-                StartCoroutine("Patton_02");
+                StartCoroutine("Patton_01"); // 돌진
             }
         }
     }
-
 
     #region Patton_01
     IEnumerator Patton_01()
@@ -95,12 +86,22 @@ public class Boss_Middle : Enemy
     IEnumerator Patton_02()
     {
         onPatton = true; // 패턴시작
-
-        animator.SetBool("Patton02", true);
+        animator.SetBool("Patton02", true); // 활을쏜다
         yield return new WaitForSeconds(2.5f);
         animator.SetBool("Patton02", false);
         Patton02_Arrow.SetActive(true);
-        yield return new WaitForSeconds(6.0f);
+
+
+        animator.SetInteger("Patton01", 1); // 돌진준비
+        yield return new WaitForSeconds(1);
+        animator.SetInteger("Patton01", 2); // 돌진
+        isMove = true; //이동
+        yield return new WaitForSeconds(MoveRange);
+        isMove = false; // 이동중지
+        this.gameObject.GetComponent<SpriteRenderer>().flipX = !this.gameObject.GetComponent<SpriteRenderer>().flipX; //뒤돌아본다
+        animator.SetInteger("Patton01", 0); // 패턴중지
+
+        yield return new WaitForSeconds(4.0f);
         Patton02_Arrow.SetActive(false);
 
         onPatton = false; // 패턴끝
@@ -113,7 +114,9 @@ public class Boss_Middle : Enemy
         StopCoroutine("StartMiddleBoss");
         this.gameObject.GetComponent<Collider2D>().enabled = false;
         StartCoroutine("DieAnimation");
-        
+
+        MiddleBossItem.SetActive(true);
+
         startBossStage.RemoveWalls(); // 스테이지 클리어
     }
 

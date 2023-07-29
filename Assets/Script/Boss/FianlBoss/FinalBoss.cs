@@ -33,6 +33,12 @@ public class FinalBoss : Enemy
     [SerializeField] private float time = 0;
     [SerializeField] private float Patton01_CoolTime = 0;
 
+    [Header("사운드")]
+    [SerializeField] private AudioClip moveClip;
+    [SerializeField] private AudioClip DisAppearSound;
+
+    [Header("Item")]
+    [SerializeField] private GameObject Fianl_Item;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -113,6 +119,7 @@ public class FinalBoss : Enemy
     {
         OnPatton_01 = true;
         animator.Play("Final_Boss_Disappear");
+        Sound.instance.Play(DisAppearSound, false);
         yield return new WaitForSeconds(0.7f); // 애니메이션
         SetBeria(false);
 
@@ -132,7 +139,7 @@ public class FinalBoss : Enemy
                 Warning_Sign = Patton01_Appear_Pos02.transform.GetChild(0).gameObject;
                 break;
         }
-
+        Sound.instance.Play(moveClip, false);
 
         Warning_Sign.SetActive(true); // 전조증상
         yield return new WaitForSeconds(1); // 애니메이션    
