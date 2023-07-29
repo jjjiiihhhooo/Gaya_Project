@@ -26,8 +26,7 @@ public class GetItem : MonoBehaviour
     //Player_Get_Item_Final01
     //Player_Get_Item_Final02
 
-    [Header("클리어시 지워줘야함")]
-    [SerializeField] GameObject gameover;
+    GameObject gameover;
 
     private void Start()
     {
@@ -60,8 +59,6 @@ public class GetItem : MonoBehaviour
         player.GetComponent<Player_Move>().enabled = false;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
         this.gameObject.GetComponent<Collider2D>().isTrigger = false;
-
-
 
         player.GetComponent<Animator>().Play(Animation02); // 플레이어 애니메이션
         yield return new WaitForSeconds(AnimationTime02);

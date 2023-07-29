@@ -1566,9 +1566,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHitTime: 1
-  KnockbackX: 15
-  KnockbackY: 15
+  KnockbackX: 10
+  KnockbackY: 10
   isHit: 0
+  isInvincibility: 0
 --- !u!114 &5810597624381187631
 MonoBehaviour:
   m_ObjectHideFlags: 0

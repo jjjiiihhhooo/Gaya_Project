@@ -12,6 +12,10 @@ public class GetDamage : MonoBehaviour
     public float KnockbackX = 5;
     public float KnockbackY = 10;
 
+    [Header("무적시간 숫자 * 0.2초")]
+    public float isInvincibilityTime = 10;
+
+
     [Header("-------------------------플레이어의 상태------------------------- ")]
     public bool isHit;
     public bool isInvincibility;
@@ -20,6 +24,8 @@ public class GetDamage : MonoBehaviour
     Controller2D controller;
     Animator animator;
 
+
+
     private HpUI UIUpdate;
 
     private void Start()
@@ -27,7 +33,8 @@ public class GetDamage : MonoBehaviour
         UIUpdate = GameObject.FindAnyObjectByType<HpUI>();
         controller = GetComponent<Controller2D>();
         player_Move = GetComponent<Player_Move>();
-        animator = GetComponent<Animator>();    }
+        animator = GetComponent<Animator>();    
+    }
 
     private void Update()
     {
@@ -35,6 +42,18 @@ public class GetDamage : MonoBehaviour
         {
             revive();
         }
+    }
+
+    IEnumerator Invincibility()
+    {
+        for(int i = 0; i< 10; i++)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(123, 123, 123, 255);
+            yield return new WaitForSeconds(0.1f);
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+            yield return new WaitForSeconds(0.1f);
+        }
+        isInvincibility = false;
     }
 
     public void OnHit()
@@ -62,6 +81,7 @@ public class GetDamage : MonoBehaviour
 
     IEnumerator WaitStunTime()
     {
+        StartCoroutine("Invincibility");
         animator.SetBool("isDamage", true);
         yield return new WaitForSeconds(onHitTime);
         animator.SetBool("isDamage", false); // 변수를 정리한다.
@@ -70,7 +90,6 @@ public class GetDamage : MonoBehaviour
 
     public void revive()
     {
-        isInvincibility = false;
         Debug.Log("땅에 닿았다!");
         controller.collisions.below = true; // 땅에 붙었다.
         player_Move.isStun = false;

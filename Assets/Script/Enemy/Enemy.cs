@@ -27,12 +27,16 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log(this.gameObject.name + " : ¸Â¾Ò´Ù!");
         Sound.instance.Play(Hit_sound, false);
-        StartCoroutine("GetDamaged");
         currentHp -= damage;
         if (currentHp <= 0)
         {
             Die();
         }
+        else
+        {
+            StartCoroutine("GetDamaged");
+        }
+        
     }
 
     IEnumerator GetDamaged()

@@ -19,7 +19,6 @@ public class Scececece : MonoBehaviour
     {
         fade.SetActive(true);
         yield return new WaitForSeconds(2f);
-        SceneManager.UnloadScene(UnloadScene);
         SceneManager.LoadScene(SceneName,LoadSceneMode.Additive);
         fade.SetActive(false);
     }

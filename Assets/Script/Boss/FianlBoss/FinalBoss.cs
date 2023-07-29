@@ -109,9 +109,16 @@ public class FinalBoss : Enemy
     public override void Die()
     {
         base.Die();
+        StartCoroutine("Death");
+
+        //아이템을 드랍한다.
+    }
+    IEnumerator Death()
+    {
+        animator.Play("Final_Boss_Die");
+        yield return new WaitForSeconds(1);
         gameObject.SetActive(false); // 보스 비활성화
         Fianl_Item.SetActive(true);
-        //아이템을 드랍한다.
     }
 
     #region Patton1

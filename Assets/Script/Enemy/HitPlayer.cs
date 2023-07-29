@@ -25,7 +25,10 @@ public class HitPlayer : MonoBehaviour
         {
             Debug.Log("플레이어를 때렸다.");
             collision.gameObject.GetComponent<GetDamage>().OnHit(); //플레이어 대미지
-            StartCoroutine("ICD"); // 내부쿨타임 시작
+            if (this.gameObject.activeSelf)
+            {
+                StartCoroutine("ICD"); // 내부쿨타임 시작
+            }
         }
     }
     IEnumerator ICD()
