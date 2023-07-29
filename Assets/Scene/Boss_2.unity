@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossStart: {fileID: 1891086250}
+  Bullets: {fileID: 837687860}
 --- !u!1 &24800285
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5084,7 @@ MonoBehaviour:
   Animation02: Player_Get_Item_Final02
   AnimationTime01: 0.7
   AnimationTime02: 3
+  gameover: {fileID: 0}
 --- !u!50 &1819722931
 Rigidbody2D:
   serializedVersion: 4
@@ -5485,6 +5487,8 @@ MonoBehaviour:
   BossSpawnPoint: {fileID: 1704349581}
   BossCameraPos: {fileID: 601941143}
   Camera: {fileID: 542716216}
+  KnockBackX: 2
+  KnockBackY: 2
   isStart: 0
 --- !u!4 &1891086254
 Transform:

@@ -110,7 +110,7 @@ public class FinalBoss : Enemy
     {
         base.Die();
         gameObject.SetActive(false); // 보스 비활성화
-        //
+        Fianl_Item.SetActive(true);
         //아이템을 드랍한다.
     }
 

@@ -14,7 +14,7 @@ public class GetDamage : MonoBehaviour
 
     [Header("-------------------------플레이어의 상태------------------------- ")]
     public bool isHit;
-
+    public bool isInvincibility;
     //컴포넌트
     Player_Move player_Move;
     Controller2D controller;
@@ -39,22 +39,25 @@ public class GetDamage : MonoBehaviour
 
     public void OnHit()
     {
-        Debug.Log("Player : 아프다!");
-        PlayerStatus.Instance.SetHp(-1); // 데미지를 입는다.
+        if (!isInvincibility)
+        {
+            Debug.Log("Player : 아프다!");
+            PlayerStatus.Instance.SetHp(-1); // 데미지를 입는다.
 
-        UIUpdate.UpdateUI(PlayerStatus.Instance.HP); // UI업데이트
+            isInvincibility = true;
+            UIUpdate.UpdateUI(PlayerStatus.Instance.HP); // UI업데이트
 
-        KnockbackY = Mathf.Abs(KnockbackY); // 무조건 양수
+            KnockbackY = Mathf.Abs(KnockbackY); // 무조건 양수
 
-        player_Move.isStun = true; // 입력을 못받게한다.
+            player_Move.isStun = true; // 입력을 못받게한다.
+            isHit = true; // 맞았다!
+            player_Move.input = Vector2.zero; // 적용되던 움직임을 멈춘다.
 
-        isHit = true; // 맞았다!
-        player_Move.input = Vector2.zero; // 적용되던 움직임을 멈춘다.
+            controller.collisions.below = false; // 공중에 띄운다
+            player_Move.velocity = new Vector2(KnockbackX, KnockbackY); // 해당방향으로 날린다.
 
-        controller.collisions.below = false; // 공중에 띄운다
-        player_Move.velocity = new Vector2(KnockbackX, KnockbackY); // 해당방향으로 날린다.
-
-        StartCoroutine("WaitStunTime");
+            StartCoroutine("WaitStunTime");
+        }
     }
 
     IEnumerator WaitStunTime()
@@ -67,6 +70,7 @@ public class GetDamage : MonoBehaviour
 
     public void revive()
     {
+        isInvincibility = false;
         Debug.Log("땅에 닿았다!");
         controller.collisions.below = true; // 땅에 붙었다.
         player_Move.isStun = false;

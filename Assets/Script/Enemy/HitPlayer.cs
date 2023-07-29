@@ -34,4 +34,9 @@ public class HitPlayer : MonoBehaviour
         yield return new WaitForSeconds(AtcCoolTime);
         this.gameObject.GetComponent<Collider2D>().isTrigger = true;
     }
+
+    private void OnDisable()
+    {
+        StopCoroutine("ICD");
+    }
 }

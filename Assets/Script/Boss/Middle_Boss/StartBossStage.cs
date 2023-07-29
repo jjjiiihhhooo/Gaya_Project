@@ -14,14 +14,20 @@ public class StartBossStage : MonoBehaviour
     [SerializeField] private GameObject BossSpawnPoint;
     [SerializeField] private Transform BossCameraPos;
     [SerializeField] private GameObject Camera;
+    [SerializeField] private float KnockBackX = 2;
+    [SerializeField] private float KnockBackY = 2;
+    
     //º¯¼ö
     public bool isStart = false;
     private GameOver gameOver;
     
 
+
     public void Start()
     {
         player = GameObject.Find("Player");
+        player.GetComponent<GetDamage>().KnockbackX = KnockBackX;
+        player.GetComponent<GetDamage>().KnockbackY = KnockBackY;
         BossStartText = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
         gameOver = GameObject.Find("GameManager").GetComponent<GameOver>();
         gameOver.ResetStage.AddListener(ResetStartBossStage);
