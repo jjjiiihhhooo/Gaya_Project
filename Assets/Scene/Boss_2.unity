@@ -1274,7 +1274,7 @@ MonoBehaviour:
   Patton01_Appear_Pos00: {fileID: 24800285}
   Patton01_Appear_Pos01: {fileID: 440847302}
   Patton01_Appear_Pos02: {fileID: 466927969}
-  Patton01_Speed: 10
+  Patton01_Speed: 13
   Patton01_Time: 3
   Warning_Sign: {fileID: 1262927890}
   Patton01_Term: 5
@@ -3556,7 +3556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &963387856
 MonoBehaviour:
   m_ObjectHideFlags: 0
