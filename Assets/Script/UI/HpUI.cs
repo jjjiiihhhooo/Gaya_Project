@@ -14,16 +14,13 @@ public class HpUI : MonoBehaviour
 
     private GameObject[] Heart;
 
-    private void Awake()
+    public void UpdateUI(int currentHp)
     {
-        Heart = new GameObject[3]; 
+        Heart = new GameObject[3];
         Heart[0] = this.gameObject.transform.GetChild(0).gameObject; // 哭率
         Heart[1] = this.gameObject.transform.GetChild(1).gameObject; // 啊款单
         Heart[2] = this.gameObject.transform.GetChild(2).gameObject; // 坷弗率
-    }
 
-    public void UpdateUI(int currentHp)
-    {
         switch (currentHp)
         {
             case 6:

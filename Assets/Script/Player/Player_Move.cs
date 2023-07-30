@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent (typeof (Controller2D))]

@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.iOS;
 
 public class FinalBoss_Patton_02 : MonoBehaviour
 {

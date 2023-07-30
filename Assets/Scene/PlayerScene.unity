@@ -1568,6 +1568,7 @@ MonoBehaviour:
   onHitTime: 1
   KnockbackX: 10
   KnockbackY: 10
+  isInvincibilityTime: 10
   isHit: 0
   isInvincibility: 0
 --- !u!114 &5810597624381187631
@@ -1641,6 +1642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7815985849042352829}
   - component: {fileID: 7815985849042352828}
+  - component: {fileID: 7815985849042352831}
   m_Layer: 0
   m_Name: Managers____________________________________
   m_TagString: Untagged
@@ -1648,6 +1650,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7815985849042352831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815985849042352830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271a7d70196317e4f973711728709a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7815985849313856678
 Transform:
   m_ObjectHideFlags: 0
@@ -2042,7 +2056,6 @@ GameObject:
   - component: {fileID: 7815985850400312712}
   - component: {fileID: 7815985850400312713}
   - component: {fileID: 7815985850400312711}
-  - component: {fileID: 7815985850400312715}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2050,18 +2063,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7815985850400312715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7815985850400312714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271a7d70196317e4f973711728709a40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7815985850947682234
 Transform:
   m_ObjectHideFlags: 0
@@ -2205,8 +2206,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 64
-  horizontalRayCount: 4
-  verticalRayCount: 4
+  horizontalRayCount: 8
+  verticalRayCount: 8
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   Collider: {fileID: 0}
