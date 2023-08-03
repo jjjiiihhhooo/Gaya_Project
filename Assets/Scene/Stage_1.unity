@@ -47977,6 +47977,7 @@ MonoBehaviour:
   Camera: {fileID: 646228349}
   KnockBackX: 2
   KnockBackY: 2
+  soundName: middle
   isStart: 0
 --- !u!1001 &1995530265
 PrefabInstance:

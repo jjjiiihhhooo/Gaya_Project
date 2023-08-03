@@ -13,11 +13,11 @@ public class StartBossStage : MonoBehaviour
     [SerializeField] private GameObject Camera;
     [SerializeField] private float KnockBackX = 2;
     [SerializeField] private float KnockBackY = 2;
-    
+    [SerializeField] private string soundName;
     //변수
     public bool isStart = false;
     private GameOver gameOver;
-    
+
 
 
     public void Start()
@@ -38,7 +38,9 @@ public class StartBossStage : MonoBehaviour
             {
                 isStart = true;
                 player.GetComponent<Player_Move>().enabled = false; // 못움직이게 함
+                Sound.instance.Play(Sound.instance.audioDictionary[soundName], true);
                 StartCoroutine("ReadyBoss");
+
             }
         }
     }

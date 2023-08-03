@@ -110,7 +110,9 @@ public class FinalBoss : Enemy
     public override void Die()
     {
         base.Die();
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
         StartCoroutine("Death");
+        Sound.instance.audioSources[0].Stop();
         Sound.instance.Play(clearSound, false);
         //아이템을 드랍한다.
     }

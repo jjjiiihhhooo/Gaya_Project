@@ -17,8 +17,8 @@ public class ResetFinalBossStage : MonoBehaviour
     public void ResetStage()
     {
         BossStart.GetComponent<StartBossStage>().ResetStartBossStage();
-        
-        for(int i = 0; i < Bullets.transform.childCount; i++)
+
+        for (int i = 0; i < Bullets.transform.childCount; i++)
         {
             Destroy(Bullets.transform.GetChild(i).gameObject);
         }

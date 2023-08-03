@@ -112,10 +112,11 @@ public class Boss_Middle : Enemy
 
     public override void Die()
     {
+
         StopCoroutine("StartMiddleBoss");
         this.gameObject.GetComponent<Collider2D>().enabled = false;
         StartCoroutine("DieAnimation");
-
+        Sound.instance.audioSources[0].Stop();
         MiddleBossItem.SetActive(true);
         Sound.instance.Play(clearSound, false);
         startBossStage.RemoveWalls(); // 스테이지 클리어

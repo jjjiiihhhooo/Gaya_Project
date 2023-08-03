@@ -17,7 +17,7 @@ public class Sound : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             audioDictionary = new Dictionary<string, AudioClip>();
@@ -33,9 +33,9 @@ public class Sound : MonoBehaviour
 
     public Dictionary<string, AudioClip> audioDictionary;
 
-    [SerializeField] private AudioSource[] audioSources;
+    [SerializeField] public AudioSource[] audioSources;
 
-    
+
     private void AudioDataInit()
     {
         for (int i = 0; i < audioDatas.Length; i++) audioDictionary.Add(audioDatas[i].audioName, audioDatas[i].audio);
@@ -66,9 +66,6 @@ public class Sound : MonoBehaviour
                 audioSources[2].pitch = pitch;
                 audioSources[2].PlayOneShot(audioClip);
             }
-            
         }
     }
-
-
 }
