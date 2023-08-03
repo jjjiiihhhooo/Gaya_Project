@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: New Rule Tile (Override)
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: -944032513, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
+  m_DefaultSprite: {fileID: -146298067, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
@@ -85,7 +85,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 4
     m_Sprites:
-    - {fileID: -944032513, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
+    - {fileID: -146298067, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Tile: {fileID: 11400000, guid: f3e0449963187d64eb19d6a472a46041, type: 2}
   m_Sprites:
   - m_OriginalSprite: {fileID: -1421050662, guid: 2cabc39835d0e1f42b240af24961c741, type: 3}
-    m_OverrideSprite: {fileID: -944032513, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
+    m_OverrideSprite: {fileID: -146298067, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
   - m_OriginalSprite: {fileID: -250676319, guid: 2cabc39835d0e1f42b240af24961c741, type: 3}
     m_OverrideSprite: {fileID: 1726707250, guid: 6afe71b18ae79a14ea0c222977f6d4bf, type: 3}
   - m_OriginalSprite: {fileID: -1494495901, guid: 2cabc39835d0e1f42b240af24961c741, type: 3}
