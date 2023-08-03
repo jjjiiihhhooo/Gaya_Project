@@ -11,6 +11,7 @@ public class FinalBoss : Enemy
     public bool OnStun;
     public bool OnPatton_01_Move;
     public bool OnPatton_01;
+    public AudioClip clearSound;
 
     [Header("Patton01")]
     [SerializeField] private GameObject Boss_Spawn_Pos;
@@ -110,7 +111,7 @@ public class FinalBoss : Enemy
     {
         base.Die();
         StartCoroutine("Death");
-
+        Sound.instance.Play(clearSound, false);
         //아이템을 드랍한다.
     }
     IEnumerator Death()
@@ -170,7 +171,7 @@ public class FinalBoss : Enemy
 
     private void Patton01_Move()
     {
-        this.gameObject.transform.position += new Vector3(-Patton01_Speed,0,0) * Time.deltaTime;
+        this.gameObject.transform.position += new Vector3(-Patton01_Speed, 0, 0) * Time.deltaTime;
     }
 
     #endregion

@@ -6,7 +6,7 @@ public class Boss_Middle : Enemy
     /// <summary>
     /// 보스의 움직임과 패턴 죽음을 관리하는 클래스
     /// </summary>
-    
+
     [SerializeField] private StartBossStage startBossStage; // 보스 시작알리미
     [SerializeField] private GameObject Patton02_Arrow;
     [SerializeField] private GameObject MiddleBossItem;
@@ -19,6 +19,7 @@ public class Boss_Middle : Enemy
     [SerializeField] private int ChangePattonHP = 10;
     private bool isMove = false; // 움직임
     private bool onPatton = false;
+    public AudioClip clearSound;
 
     private void OnEnable()
     {
@@ -35,7 +36,7 @@ public class Boss_Middle : Enemy
 
     private void Update()
     {
-        if(isMove)
+        if (isMove)
         {
             Patton_01_Move();
         }
@@ -116,7 +117,7 @@ public class Boss_Middle : Enemy
         StartCoroutine("DieAnimation");
 
         MiddleBossItem.SetActive(true);
-
+        Sound.instance.Play(clearSound, false);
         startBossStage.RemoveWalls(); // 스테이지 클리어
     }
 
