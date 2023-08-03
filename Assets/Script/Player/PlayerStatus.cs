@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(GameOver))]
 public class PlayerStatus : MonoBehaviour
@@ -13,7 +11,7 @@ public class PlayerStatus : MonoBehaviour
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 return null;
             }
@@ -52,16 +50,18 @@ public class PlayerStatus : MonoBehaviour
     {
         HP += _Hp; // 체력을 바꾼다
         HPUI.UpdateUI(HP);
-        if ( HP <= 0 ) // 체력이 0이면
+        if (HP <= 0) // 체력이 0이면
         {
             HP = MaxHp;
             HPUI.UpdateUI(HP);
             LifeCount -= 1; // 전체목숨 하나 감소
             gameOver.Die();
 
-            if ( LifeCount <= 0) // 진짜 게임 오버
+            if (LifeCount <= 0) // 진짜 게임 오버
             {
                 Debug.Log("게임 끝! 처음부터!");
+                SceneManager.LoadScene("Title");
+                Destroy(this.gameObject.transform.parent.gameObject);
             }
         }
     }
